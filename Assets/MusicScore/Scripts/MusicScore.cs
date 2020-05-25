@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 //using UnityEngine;
 using Note;
+using System.Runtime.Serialization.Formatters.Binary;
 //using UnityEditor.Experimental.GraphView;
 
 namespace MusicScore
@@ -19,13 +20,28 @@ namespace MusicScore
 
     public class MusicScoreManager
     {
-        static MusicScore musicScore = new MusicScore();
-        static void ExportToJSON(string name)  //把musicScore导出为JSON格式文件，进行数据持久化，导出的位置在一个固定的文件夹内，name是文件名
+        public MusicScore musicScore = new MusicScore();
+        public void ExportToJSON(string name)  //把musicScore导出为JSON格式文件，进行数据持久化，导出的位置在一个固定的文件夹内，name是文件名
         {
+            string filepath = Directory.GetCurrentDirectory() + "\\" + name + ".json";
+
+            FileStream fs = new FileStream(filepath, FileMode.OpenOrCreate);
+            BinaryFormatter bf = new BinaryFormatter();
+            bf.Serialize(fs, musicScore.musicScore);
+            fs.Close();
         }
 
-        static void ImportFromJSON(string name)  //因为我们的乐谱json是放在固定文件夹里的，所以只需给个参数:文件名name就可以了，name就是文件名，把这个文件里的JSON对象：MusicScore导入，赋值给静态成员musicScore
+        public void ImportFromJSON(string name)  //因为我们的乐谱json是放在固定文件夹里的，所以只需给个参数:文件名name就可以了，name就是文件名，把这个文件里的JSON对象：MusicScore导入，赋值给静态成员musicScore
         {
+            string filepath = Directory.GetCurrentDirectory() + "\\" + name + ".json";
+            if (File.Exists(filepath))
+            {
+                FileStream fs = new FileStream(filepath, FileMode.Open);
+                BinaryFormatter bf = new BinaryFormatter();
+                List<Note.Note> msobj = (List<Note.Note>)bf.Deserialize(fs);
+                musicScore.musicScore = msobj;
+                fs.Close();
+            }
         }
     }
 
