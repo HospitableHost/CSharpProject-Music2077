@@ -12,6 +12,8 @@ namespace MusicScore
     public class MusicScore
     {
         public List<Note.Note> musicScore;  //不需要写索引器，它自身就可以用[]去访问
+        public int scoreOfNoteBar;  //这个乐谱中音符块的分数：成功按下音符块的分数
+        public int scorePerSecOfNoteStrip;  //这个乐谱中音符条每秒的分数：按下1s能加的分数
         public MusicScore()
         {
             musicScore = new List<Note.Note>();
