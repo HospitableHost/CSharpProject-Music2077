@@ -9,6 +9,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace MusicScore
 {
+    [Serializable]
     public class MusicScore
     {
         public List<Note.Note> musicScore;  //不需要写索引器，它自身就可以用[]去访问
@@ -29,7 +30,7 @@ namespace MusicScore
 
             FileStream fs = new FileStream(filepath, FileMode.OpenOrCreate);
             BinaryFormatter bf = new BinaryFormatter();
-            bf.Serialize(fs, musicScore.musicScore);
+            bf.Serialize(fs, musicScore);
             fs.Close();
         }
 
@@ -40,8 +41,8 @@ namespace MusicScore
             {
                 FileStream fs = new FileStream(filepath, FileMode.Open);
                 BinaryFormatter bf = new BinaryFormatter();
-                List<Note.Note> msobj = (List<Note.Note>)bf.Deserialize(fs);
-                musicScore.musicScore = msobj;
+                MusicScore msobj = (MusicScore)bf.Deserialize(fs);
+                musicScore = msobj;
                 fs.Close();
             }
         }
