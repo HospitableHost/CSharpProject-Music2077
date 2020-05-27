@@ -20,7 +20,13 @@ public class ShortQuadBehave : QuadBehave
     //todo:出边界检测
     public override bool CheckOut()
     {
-        return base.CheckOut();
+        if (m_nowPos.z < -erreurMiss * 2)
+        {
+            IsValid = false;
+            return true;
+        }
+        else
+            return false;
     }
     //todo:统计分数加到计分板上
     override public void MarkRecording()
