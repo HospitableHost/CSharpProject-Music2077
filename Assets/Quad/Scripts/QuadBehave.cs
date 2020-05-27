@@ -43,10 +43,6 @@ public class QuadBehave : MonoBehaviour
         {
             hitQuad();
             MarkRecording();
-            if (IsValid == false)
-            {
-                QuadPool.Die(this.gameObject);
-            }
         }
         else
         {
