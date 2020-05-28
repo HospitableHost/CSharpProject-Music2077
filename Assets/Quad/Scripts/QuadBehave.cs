@@ -11,7 +11,7 @@ public class QuadBehave : MonoBehaviour
     public delegate void hitManage();//特效处理
     public event hitManage hitQuad;//击中事件
     protected Vector3 m_nowPos;
-
+    public bool IsValid { get; set; } = true;
     //load prefab
     protected GameObject m_quad;
 
@@ -43,7 +43,6 @@ public class QuadBehave : MonoBehaviour
         {
             hitQuad();
             MarkRecording();
-            QuadPool.Die(this.gameObject);
         }
         else
         {

@@ -8,7 +8,6 @@ using UnityEngine;
 
 class LongQuadBehave : QuadBehave
 {
-    bool IsValid;//音符是否有效
     //use this to init
     public void Initialize(Note.Note_NoteStrip note)
     {
