@@ -20,7 +20,7 @@ public class QuadBehave : MonoBehaviour
     static protected float erreurMiss, erreurGood, erreurPerfect;
 
     [SerializeField]
-    static protected float m_vel;
+    static public float m_vel;
 
     //use this to init
     virtual public void Initialize(Note.Note note) { }
