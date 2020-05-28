@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
-
+using Score;
 
 public class QuadBehave : MonoBehaviour
 {
@@ -56,6 +56,12 @@ public class QuadBehave : MonoBehaviour
     {
         return false;
     }
+    //todo:检测触摸判断
+    virtual public bool CheckHit(Score.Score scoreBoard)
+    {
+        return false;
+    }
+
     virtual public bool CheckOut()
     {
         return false;
@@ -65,7 +71,11 @@ public class QuadBehave : MonoBehaviour
     {
 
     }
+    //todo:统计分数加到计分板上
+    virtual public void MarkRecording(Score.Score scoreBoard,int score)
+    {
 
+    }
 
 
     static public void SetErreur(float mis, float goo, float per)
