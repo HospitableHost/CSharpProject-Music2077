@@ -19,6 +19,12 @@ namespace MusicScore
         {
             musicScore = new List<Note.Note>();
         }
+        public MusicScore(int scoreOfNoteBar, int scorePerSecOfNoteStrip)
+        {
+            musicScore = new List<Note.Note>();
+            this.scoreOfNoteBar = scoreOfNoteBar;
+            this.scorePerSecOfNoteStrip = scorePerSecOfNoteStrip;
+        }
     }
 
     public class MusicScoreManager
