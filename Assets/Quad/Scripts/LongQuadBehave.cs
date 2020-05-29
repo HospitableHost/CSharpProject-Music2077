@@ -25,7 +25,7 @@ class LongQuadBehave : QuadBehave
     }
     override public bool CheckOut()
     {
-        if (IsValid == true/*没有按到按键*/ && m_nowPos.z + currentNoteStrip.lastTime / 2 == 0/* 最后的边界变为了0 */)
+        if (m_nowPos.z + currentNoteStrip.lastTime / 2 == 0/* 最后的边界变为了0 */)
             return true;
         return false;
     }

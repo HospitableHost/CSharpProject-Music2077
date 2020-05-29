@@ -41,7 +41,7 @@ public class Shooter : MonoBehaviour
         if (Music[i] != null)
         {       
             Note.Note currentNote = Music[i];
-            if (Time.time == currentNote.arrivalTime-time)
+            if (Time.time >= currentNote.arrivalTime-time)
             {
                 Shoot();
                 i++;
