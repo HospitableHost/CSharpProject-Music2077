@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Note;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -16,20 +17,26 @@ public class Shooter : MonoBehaviour
     private List<Note.Note> Music;   //深复制存储乐谱的链表
     private void Shoot()    //根据乐谱链表，发射一个Quad
     {
-        GameObject q = Resources.Load<GameObject>("Prefabs/ShortQuad");
-        Background.Background.SetPositionAtTrack(transform, Music[i].trackNum);
-        GameObject quad = QuadPool.Born(q, transform.position, transform.rotation);   //生成quad
-        if(Music[i].noteType == Note.NoteType.NoteBar)   //按类型绑定脚本
+        switch (Music[i].noteType)  //按类型绑定脚本
         {
-            ShortQuadBehave qb = quad.AddComponent<ShortQuadBehave>();   
-            qb.Initialize(Music[i]);
+            case Note.NoteType.NoteBar:       
+                GameObject squad = QuadPool.Born(new Vector3(), new Quaternion());   //生成quad
+                squad.transform.localScale = new Vector3(2, (float)0.75, 1);
+                ShortQuadBehave sqb = new ShortQuadBehave();
+                sqb.Initialize(Music[i]);
+                sqb = squad.AddComponent<ShortQuadBehave>();
+                break;
+            case Note.NoteType.NoteStrip:
+                GameObject lquad = QuadPool.Born(new Vector3(), new Quaternion());   //生成quad
+                lquad.transform.localScale = new Vector3(2, ((Note.Note_NoteStrip)Music[i]).lastTime * QuadBehave.m_vel, 1);
+                LongQuadBehave lqb = new LongQuadBehave();
+                lqb.Initialize(Music[i]);
+                lqb = lquad.AddComponent<LongQuadBehave>();
+                break;
+            default: break;
         }
-        else
-        {
-            LongQuadBehave qb = quad.AddComponent<LongQuadBehave>();
-            qb.Initialize(Music[i]);
-        }    
-    }     
+    }
+           
     void Start()    //初始化游戏的时间和乐谱音符计数
     {
         i = 0;
