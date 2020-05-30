@@ -17,10 +17,17 @@ public class QuadBehave : MonoBehaviour
 
     protected Note.Note m_note;
     [SerializeField]
-    static protected float erreurMiss, erreurGood, erreurPerfect;
+    static public float SurfacePos { get; set; } = 0.1f;
+    [SerializeField]
+    static protected float erreurGood=0.75f, erreurPerfect=0.1875f;
 
     [SerializeField]
     static public float m_vel;
+
+    static public float GoodLeft { get { return SurfacePos - erreurGood; } }
+    static public float GoodRight { get { return SurfacePos + erreurGood; } }
+    static public float PerfectLeft { get { return SurfacePos - erreurPerfect; } }
+    static public float PerfectRight { get { return SurfacePos + erreurPerfect; } }
 
     //use this to init
     virtual public void Initialize(Note.Note note) { }
@@ -28,6 +35,7 @@ public class QuadBehave : MonoBehaviour
     // Start is called before the first frame update
     protected void Start()
     {
+        m_quad = this.gameObject;
         Background.Background.SetPositionAtTrack(transform, m_note.trackNum);
         m_nowPos = transform.position;
     }
@@ -42,7 +50,6 @@ public class QuadBehave : MonoBehaviour
         else if (CheckHit())
         {
             hitQuad();
-            MarkRecording();
         }
         else
         {
@@ -78,9 +85,8 @@ public class QuadBehave : MonoBehaviour
     }
 
 
-    static public void SetErreur(float mis, float goo, float per)
+    static public void SetErreur(float goo, float per)
     {
-        erreurMiss = mis;
         erreurGood = goo;
         erreurPerfect = per;
     }

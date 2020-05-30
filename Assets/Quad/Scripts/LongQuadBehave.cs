@@ -13,7 +13,6 @@ class LongQuadBehave : QuadBehave
     //use this to init
     public void Initialize(Note.Note_NoteStrip note)
     {
-        m_quad = Resources.Load<GameObject>("Prefabs/LongQuad");
         m_note = note;
         currentNoteStrip = note;
     }

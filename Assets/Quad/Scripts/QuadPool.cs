@@ -7,11 +7,12 @@ public class QuadPool
 {
     public static Stack<GameObject> pool = new Stack<GameObject>();
 
-    public static GameObject Born(GameObject quad, Vector3 position, Quaternion quaternion)
+    public static GameObject Born(Vector3 position, Quaternion quaternion)
     {
         if (pool.Count == 0)
         {
-            GameObject res = MonoBehaviour.Instantiate(quad, position, quaternion);
+            GameObject q = Resources.Load<GameObject>("Prefabs/Quad");
+            GameObject res = MonoBehaviour.Instantiate(q, position, quaternion);
             return res;
         }
         else

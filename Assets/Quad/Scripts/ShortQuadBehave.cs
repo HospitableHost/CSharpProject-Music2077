@@ -9,7 +9,6 @@ public class ShortQuadBehave : QuadBehave
     //use this to init
     public void Initialize(Note.Note_NoteBar note)
     {
-        m_quad = Resources.Load<GameObject>("Prefabs/ShortQuad");
         m_note = note;
     }
 
@@ -53,7 +52,7 @@ public class ShortQuadBehave : QuadBehave
     //todo:出边界检测
     public override bool CheckOut()
     {
-        if (m_nowPos.z < -erreurMiss * 2)
+        if (m_nowPos.z < -5)
         {
             IsValid = false;
             return true;
