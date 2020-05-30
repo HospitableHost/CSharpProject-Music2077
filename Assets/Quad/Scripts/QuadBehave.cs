@@ -95,5 +95,111 @@ public class QuadBehave : MonoBehaviour
         m_vel = vel;
     }
 
+
+    public Vector3[] getPositionsInUnityWorldOfAllTouches()  //这个函数获得所有触摸的Unity世界坐标
+    {
+        Vector3[] touchPositions = new Vector3[Input.touches.Length];//touchPositions数组存放这一帧检测到的所有touch的转换到unity世界中的坐标
+        Vector3 CameraPos = new Vector3(0, 0, -5);//摄像机的世界坐标
+        for (int i = 0; i < Input.touches.Length; i++)
+        {
+            touchPositions[i] = Camera.main.ScreenToWorldPoint(Input.touches[i].position);
+        }
+        return touchPositions;
+    }
+
+
+    //判断给定的触摸集合中是否含有指定通道按键处的触摸,touchPositions是所有触摸在Unity世界中的坐标的数组，tracknum是要判断的哪个通道上的按键
+    public bool haveTouchOfTheTrack(Vector3[] touchPositions, int tracknum)
+    {
+            switch (tracknum)
+            {
+                case 0:
+                    foreach (Vector3 touch in touchPositions)
+                    {
+                        if (touch.z < QuadBehave.SurfacePos && touch.x > -5 && touch.x < -2.5 && touch.y == -2.5)
+                            return true;
+                    }
+                    return false;
+                case 1:
+                    foreach (Vector3 touch in touchPositions)
+                    {
+                        if (touch.z < QuadBehave.SurfacePos && touch.x > -2.5 && touch.x < 0 && touch.y == -2.5)
+                            return true;
+                    }
+                    return false;
+                case 2:
+                    foreach (Vector3 touch in touchPositions)
+                    {
+                        if (touch.z < QuadBehave.SurfacePos && touch.x > 0 && touch.x < 2.5 && touch.y == -2.5)
+                            return true;
+                    }
+                    return false;
+                case 3:
+                    foreach (Vector3 touch in touchPositions)
+                    {
+                        if (touch.z < QuadBehave.SurfacePos && touch.x > 2.5 && touch.x < 5 && touch.y == -2.5)
+                            return true;
+                    }
+                    return false;
+                case 4:
+                    foreach (Vector3 touch in touchPositions)
+                    {
+                        if (touch.z < QuadBehave.SurfacePos && touch.y > -2.5 && touch.y < 0 && touch.x == 5)
+                            return true;
+                    }
+                    return false;
+                case 5:
+                    foreach (Vector3 touch in touchPositions)
+                    {
+                        if (touch.z < QuadBehave.SurfacePos && touch.y > 0 && touch.y < 2.5 && touch.x == 5)
+                            return true;
+                    }
+                    return false;
+                case 6:
+                    foreach (Vector3 touch in touchPositions)
+                    {
+                        if (touch.z < QuadBehave.SurfacePos && touch.x > 2.5 && touch.x < 5 && touch.y == 2.5)
+                            return true;
+                    }
+                    return false;
+                case 7:
+                    foreach (Vector3 touch in touchPositions)
+                    {
+                        if (touch.z < QuadBehave.SurfacePos && touch.x > 0 && touch.x < 2.5 && touch.y == 2.5)
+                            return true;
+                    }
+                    return false;
+                case 8:
+                    foreach (Vector3 touch in touchPositions)
+                    {
+                        if (touch.z < QuadBehave.SurfacePos && touch.x > -2.5 && touch.x < 0 && touch.y == 2.5)
+                            return true;
+                    }
+                    return false;
+                case 9:
+                    foreach (Vector3 touch in touchPositions)
+                    {
+                        if (touch.z < QuadBehave.SurfacePos && touch.x > -5 && touch.x < -2.5 && touch.y == 2.5)
+                            return true;
+                    }
+                    return false;
+                case 10:
+                    foreach (Vector3 touch in touchPositions)
+                    {
+                        if (touch.z < QuadBehave.SurfacePos && touch.y > 0 && touch.y < 2.5 && touch.x == -5)
+                            return true;
+                    }
+                    return false;
+                case 11:
+                    foreach (Vector3 touch in touchPositions)
+                    {
+                        if (touch.z < QuadBehave.SurfacePos && touch.y > -2.5 && touch.y < 0 && touch.x == -5)
+                            return true;
+                    }
+                    return false;
+                default:
+                    return false;
+            }
+    }
 }
 
