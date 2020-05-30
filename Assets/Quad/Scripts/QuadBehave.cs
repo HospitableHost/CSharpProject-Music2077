@@ -19,6 +19,8 @@ public class QuadBehave : MonoBehaviour
     [SerializeField]
     static public float SurfacePos { get; set; } = 0.1f;
     [SerializeField]
+    static public float edgePos { get; set; } = -2.16f;//这是屏幕边缘平面，当quad的远离按键的一边的中点的z坐标小于它时，quad就完全不见了。2160*1080时为z=-0.66；1920*1080时为z=-0.12
+    [SerializeField]
     static protected float erreurGood=0.75f, erreurPerfect=0.1875f;
 
     [SerializeField]
@@ -73,16 +75,7 @@ public class QuadBehave : MonoBehaviour
     {
         return false;
     }
-    //todo:统计分数加到计分板上
-    virtual public void MarkRecording()
-    {
 
-    }
-    //todo:统计分数加到计分板上
-    virtual public void MarkRecording(Score.Score scoreBoard,int score)
-    {
-
-    }
 
 
     static public void SetErreur(float goo, float per)

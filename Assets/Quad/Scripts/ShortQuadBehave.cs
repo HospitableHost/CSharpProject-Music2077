@@ -61,7 +61,7 @@ public class ShortQuadBehave : QuadBehave
             return false;
     }
     //todo:统计分数加到计分板上
-    override public void MarkRecording(Score.Score scoreBoard, int ScoreToAdd)
+    public void MarkRecording(Score.Score scoreBoard, int ScoreToAdd)
     {
 
         scoreBoard.totalScore += ScoreToAdd;
