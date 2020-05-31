@@ -22,16 +22,14 @@ public class ShooterBehave : MonoBehaviour
             case Note.NoteType.NoteBar:       
                 GameObject squad = QuadPool.Born(new Vector3(), new Quaternion());   //生成quad
                 squad.transform.localScale = new Vector3(2, (float)0.75, 1);
-                ShortQuadBehave sqb = new ShortQuadBehave();
-                sqb.Initialize(Music[i]);
-                sqb = squad.AddComponent<ShortQuadBehave>();
+                ShortQuadBehave sqb = squad.AddComponent<ShortQuadBehave>();
+                sqb.Initialize((Note.Note_NoteBar)Music[i]);
                 break;
             case Note.NoteType.NoteStrip:
                 GameObject lquad = QuadPool.Born(new Vector3(), new Quaternion());   //生成quad
                 lquad.transform.localScale = new Vector3(2, ((Note.Note_NoteStrip)Music[i]).lastTime * QuadBehave.m_vel, 1);
-                LongQuadBehave lqb = new LongQuadBehave();
-                lqb.Initialize(Music[i]);
-                lqb = lquad.AddComponent<LongQuadBehave>();
+                LongQuadBehave lqb = lquad.AddComponent<LongQuadBehave>();
+                lqb.Initialize((Note.Note_NoteStrip)Music[i]);
                 break;
             default: break;
         }
@@ -47,13 +45,14 @@ public class ShooterBehave : MonoBehaviour
     void FixedUpdate()    //根据时间判断发射与否
     {
         Debug.Log(Music.Count);
-        if (Music[i] != null)
+        if (i < Music.Count())
         {       
             Note.Note currentNote = Music[i];
             if (Time.time >= currentNote.arrivalTime-time)
             {
                 Shoot();
                 i++;
+
             }
         }
     }
