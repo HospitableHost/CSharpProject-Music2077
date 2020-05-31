@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class Shooter : MonoBehaviour
+public class ShooterBehave : MonoBehaviour
 {
     float time;
     private int i;    //对List列表进行计数
@@ -39,12 +39,14 @@ public class Shooter : MonoBehaviour
            
     void Start()    //初始化游戏的时间和乐谱音符计数
     {
+        MusicScore.MusicScoreManager.ImportFromJSON("");
+        this.ImportMusic(MusicScore.MusicScoreManager.musicScore.musicScore);
         i = 0;
         time = 50 / QuadBehave.m_vel;
     }   
     void FixedUpdate()    //根据时间判断发射与否
     {
-
+        Debug.Log(Music.Count);
         if (Music[i] != null)
         {       
             Note.Note currentNote = Music[i];

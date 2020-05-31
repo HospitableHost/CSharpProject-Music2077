@@ -37,8 +37,7 @@ public class ShortQuadBehave : QuadBehave
 
     //todo:检测触摸判断
     override public bool CheckHit(Score.Score scoreBoard)
-    {
-        Debug.Log("hit");
+    {        
         double borderLine = 0;//合法检测区
         int scoreLevel = 0; //表示得分的等级 5 - good     10 - perfect      0 - miss
         switch (Screen.width)
