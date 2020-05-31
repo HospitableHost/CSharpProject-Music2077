@@ -1,0 +1,547 @@
+{
+  "musicScore": [
+
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 27.386,
+      "noteType": 0,
+      "trackNum": 0
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 27.702,
+      "noteType": 0,
+      "trackNum": 1
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 28.044,
+      "noteType": 0,
+      "trackNum": 2
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 28.387,
+      "noteType": 0,
+      "trackNum": 3
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 28.725,
+      "noteType": 0,
+      "trackNum": 4
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 29.041,
+      "noteType": 0,
+      "trackNum": 5
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 29.376,
+      "noteType": 0,
+      "trackNum": 1
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 27.702,
+      "noteType": 0,
+      "trackNum": 1
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 29.7,
+      "noteType": 0,
+      "trackNum": 0
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 30.046,
+      "noteType": 0,
+      "trackNum": 3
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 30.378,
+      "noteType": 0,
+      "trackNum": 7
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 30.718,
+      "noteType": 0,
+      "trackNum": 7
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 31.049,
+      "noteType": 0,
+      "trackNum": 10
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 31.376,
+      "noteType": 0,
+      "trackNum": 11
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 31.69,
+      "noteType": 0,
+      "trackNum": 10
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 32.048,
+      "noteType": 0,
+      "trackNum": 6
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 32.38,
+      "noteType": 0,
+      "trackNum": 9
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 32.739,
+      "noteType": 0,
+      "trackNum": 8
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 33.23,
+      "noteType": 0,
+      "trackNum": 8
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 34.062,
+      "noteType": 0,
+      "trackNum": 7
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 34.556,
+      "noteType": 0,
+      "trackNum": 11
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 35.398,
+      "noteType": 0,
+      "trackNum": 11
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 35.901,
+      "noteType": 0,
+      "trackNum": 10
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 36.732,
+      "noteType": 0,
+      "trackNum": 9
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 37.23,
+      "noteType": 0,
+      "trackNum": 1
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 38.058,
+      "noteType": 0,
+      "trackNum": 2
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 38.585,
+      "noteType": 0,
+      "trackNum": 2
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 39.397,
+      "noteType": 0,
+      "trackNum": 2
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 39.892,
+      "noteType": 0,
+      "trackNum": 10
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 40.734,
+      "noteType": 0,
+      "trackNum": 9
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 41.242,
+      "noteType": 0,
+      "trackNum": 11
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 42.072,
+      "noteType": 0,
+      "trackNum": 7
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 42.39,
+      "noteType": 0,
+      "trackNum": 7
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 64.536,
+      "noteType": 0,
+      "trackNum": 5
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 69.39,
+      "noteType": 0,
+      "trackNum": 6
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 70.719,
+      "noteType": 0,
+      "trackNum": 2
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 72.051,
+      "noteType": 0,
+      "trackNum": 3
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 73.383,
+      "noteType": 0,
+      "trackNum": 4
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 74.214,
+      "noteType": 0,
+      "trackNum": 0
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 74.719,
+      "noteType": 0,
+      "trackNum": 2
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 77.392,
+      "noteType": 0,
+      "trackNum": 3
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 79.555,
+      "noteType": 0,
+      "trackNum": 4
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 82.72,
+      "noteType": 0,
+      "trackNum": 0
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 84.052,
+      "noteType": 0,
+      "trackNum": 1
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 86.05,
+      "noteType": 0,
+      "trackNum": 10
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 86.245,
+      "noteType": 0,
+      "trackNum": 9
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 86.383,
+      "noteType": 0,
+      "trackNum": 6
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 86.531,
+      "noteType": 0,
+      "trackNum": 5
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 86.66,
+      "noteType": 0,
+      "trackNum": 0
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 86.719,
+      "noteType": 0,
+      "trackNum": 5
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 86.85,
+      "noteType": 0,
+      "trackNum": 9
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 87.051,
+      "noteType": 0,
+      "trackNum": 2
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 87.239,
+      "noteType": 0,
+      "trackNum": 7
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 87.382,
+      "noteType": 0,
+      "trackNum": 1
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 87.5,
+      "noteType": 0,
+      "trackNum": 0
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 87.698,
+      "noteType": 0,
+      "trackNum": 10
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 87.827,
+      "noteType": 0,
+      "trackNum": 4
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 87.982,
+      "noteType": 0,
+      "trackNum": 3
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 88.058,
+      "noteType": 0,
+      "trackNum": 9
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 88.16,
+      "noteType": 0,
+      "trackNum": 9
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 88.373,
+      "noteType": 0,
+      "trackNum": 6
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 88.719,
+      "noteType": 0,
+      "trackNum": 0
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 89.062,
+      "noteType": 0,
+      "trackNum": 1
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 89.394,
+      "noteType": 0,
+      "trackNum": 3
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 89.727,
+      "noteType": 0,
+      "trackNum": 10
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 90.081,
+      "noteType": 0,
+      "trackNum": 11
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 90.389,
+      "noteType": 0,
+      "trackNum": 5
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 90.751,
+      "noteType": 0,
+      "trackNum": 3
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 91.061,
+      "noteType": 0,
+      "trackNum": 3
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 91.391,
+      "noteType": 0,
+      "trackNum": 0
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 91.741,
+      "noteType": 0,
+      "trackNum": 1
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 92.701,
+      "noteType": 0,
+      "trackNum": 3
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 93.888,
+      "noteType": 0,
+      "trackNum": 2
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 96.342,
+      "noteType": 0,
+      "trackNum": 9
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 96.342,
+      "noteType": 0,
+      "trackNum": 9
+    },
+    {
+      "__type": "Note_NoteStrip:#Note",
+      "arrivalTime": 96.718,
+      "noteType": 1,
+      "trackNum": 1,
+      "lastTime": 0.376
+    },
+    {
+      "__type": "Note_NoteStrip:#Note",
+      "arrivalTime": 118.024,
+      "noteType": 1,
+      "trackNum": 2,
+      "lastTime": 0.55
+    },
+    {
+      "__type": "Note_NoteStrip:#Note",
+      "arrivalTime": 118.574,
+      "noteType": 1,
+      "trackNum": 3,
+      "lastTime": 0.162
+    },
+    {
+      "__type": "Note_NoteStrip:#Note",
+      "arrivalTime": 118.736,
+      "noteType": 1,
+      "trackNum": 4,
+      "lastTime": 0.338
+    },
+    {
+      "__type": "Note_NoteStrip:#Note",
+      "arrivalTime": 119.074,
+      "noteType": 1,
+      "trackNum": 8,
+      "lastTime": 0.317
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 119.745,
+      "noteType": 0,
+      "trackNum": 11
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 120.727,
+      "noteType": 0,
+      "trackNum": 10
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 121.762,
+      "noteType": 0,
+      "trackNum": 0
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 122.099,
+      "noteType": 0,
+      "trackNum": 3
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 123.386,
+      "noteType": 0,
+      "trackNum": 4
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 123.83,
+      "noteType": 0,
+      "trackNum": 5
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 124.061,
+      "noteType": 0,
+      "trackNum": 6
+    },
+    {
+      "__type": "Note_NoteBar:#Note",
+      "arrivalTime": 124.392,
+      "noteType": 0,
+      "trackNum": 10
+    },
+    {
+      "__type": "Note_NoteStrip:#Note",
+      "arrivalTime": 124.719,
+      "noteType": 1,
+      "trackNum": 1,
+      "lastTime": 1.001
+    }
+  ],
+  "scoreOfNoteBar": 1,
+  "scorePerSecOfNoteStrip": 2
+}
