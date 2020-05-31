@@ -9,7 +9,7 @@ using UnityEngine;
 
 class LongQuadBehave : QuadBehave
 { 
-    private Note_NoteStrip currentNoteStrip;
+    private Note_NoteStrip currentNoteStrip=new Note_NoteStrip(10,2,5);
     bool isMiss = true;  //如果音符条的头部出了按键区域后都没有按下去，那么就miss   初始为true是采用“反看”的思想，因为先假设miss，当不miss时改为false，否则就不改，这样在代码上好实现
     //use this to init
     public void Initialize(Note.Note_NoteStrip note)
@@ -21,7 +21,7 @@ class LongQuadBehave : QuadBehave
     //这个函数根据“玩家触摸的位置”“音符条的位置”“指示音符条是否有效的变量IsValid”来决定返回值
     //这个函数还会根据“玩家触摸的位置”“音符条的位置”维护IsValid变量
     override public bool CheckHit(Score.Score scoreBoard)
-    {
+    {       
         if (this.IsValid == false) //如果这个音符条失效了，那么玩家就不能再触发音符了，所以就没必要检测是否成功触发音符了，即我就认为没有hit到音符，即返回false
         {
             return false;

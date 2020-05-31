@@ -35,8 +35,8 @@ namespace MusicScore
 
     public class MusicScoreManager
     {
-        public MusicScore musicScore = new MusicScore();
-        public void ExportToBinary(string name)    //把musicScore导出为binary格式文件，进行数据持久化，导出的位置在一个固定的文件夹内，name是文件名
+        public static MusicScore musicScore = new MusicScore();
+        public static void ExportToBinary(string name)    //把musicScore导出为binary格式文件，进行数据持久化，导出的位置在一个固定的文件夹内，name是文件名
         {
             string filepath = Directory.GetCurrentDirectory() + "\\" + name + ".bin";
             using (FileStream fs = new FileStream(filepath, FileMode.OpenOrCreate))
@@ -46,7 +46,7 @@ namespace MusicScore
             }
         }
 
-        public void ImportFromBinary(string name)  //因为我们的乐谱binary是放在固定文件夹里的，所以只需给个参数:文件名name就可以了，name就是文件名，把这个文件里的binary对象：MusicScore导入，赋值给静态成员musicScore
+        public static void ImportFromBinary(string name)  //因为我们的乐谱binary是放在固定文件夹里的，所以只需给个参数:文件名name就可以了，name就是文件名，把这个文件里的binary对象：MusicScore导入，赋值给静态成员musicScore
         {
             string filepath = Directory.GetCurrentDirectory() + "\\" + name + ".bin";
             if (File.Exists(filepath))
@@ -60,7 +60,7 @@ namespace MusicScore
             }
         }
 
-        public void ExportToJSON(string name)  //把musicScore导出为JSON格式文件，进行数据持久化，导出的位置在一个固定的文件夹内，name是文件名
+        public static void ExportToJSON(string name)  //把musicScore导出为JSON格式文件，进行数据持久化，导出的位置在一个固定的文件夹内，name是文件名
         {
             string filepath = Directory.GetCurrentDirectory() + "\\" + name + ".json";
             using (FileStream fs = new FileStream(filepath, FileMode.OpenOrCreate))
@@ -70,9 +70,10 @@ namespace MusicScore
             }
         }
 
-        public void ImportFromJSON(string name)  //因为我们的乐谱json是放在固定文件夹里的，所以只需给个参数:文件名name就可以了，name就是文件名，把这个文件里的JSON对象：MusicScore导入，赋值给静态成员musicScore
+        public static void ImportFromJSON(string name)  //因为我们的乐谱json是放在固定文件夹里的，所以只需给个参数:文件名name就可以了，name就是文件名，把这个文件里的JSON对象：MusicScore导入，赋值给静态成员musicScore
         {
-            string filepath = Directory.GetCurrentDirectory() + "\\" + name + ".json";
+            //string filepath = Directory.GetCurrentDirectory() + "\\" + name + ".json";
+            string filepath = "E:\\GitHub本地仓库\\CSharpProject - Music2077\\Assets\\MusicScore\\MusicScores\\庆功酒\\庆功酒.json";
             if (File.Exists(filepath))
             {
                 using (FileStream fs = new FileStream(filepath, FileMode.Open))

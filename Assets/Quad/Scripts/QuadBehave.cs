@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using Score;
+using Note;
 
 public class QuadBehave : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class QuadBehave : MonoBehaviour
     //load prefab
     protected GameObject m_quad;
 
-    protected Note.Note m_note;
+    protected Note.Note m_note = new Note.Note(NoteType.NoteStrip,10,2);
     [SerializeField]
     static public float SurfacePos { get; set; } = 0.1f;
     [SerializeField]
@@ -24,7 +25,7 @@ public class QuadBehave : MonoBehaviour
     static protected float erreurGood=0.75f, erreurPerfect=0.1875f;
 
     [SerializeField]
-    static public float m_vel;
+    static public float m_vel = 5.0f;
 
     static public float GoodLeft { get { return SurfacePos - erreurGood; } }
     static public float GoodRight { get { return SurfacePos + erreurGood; } }
@@ -47,14 +48,17 @@ public class QuadBehave : MonoBehaviour
     {
         if (CheckOut())
         {
+            Debug.Log("checkout");
             QuadPool.Die(this.gameObject);
         }
-        else if (CheckHit())
+        else if (CheckHit(new Score.Score()))
         {
+            Debug.Log("真的点中了");
             hitQuad();
         }
         else
         {
+            
             m_nowPos.Set(m_nowPos.x, m_nowPos.y, m_nowPos.z - m_vel * Time.deltaTime);
             this.transform.position = m_nowPos;
         }
@@ -91,6 +95,7 @@ public class QuadBehave : MonoBehaviour
 
     public Ray[] getAllRaysThroughTouches()  //这个函数获得所有从相机出发，经过手机屏幕上触摸点的Unity世界中的射线
     {
+        Debug.Log(Input.touches.Length);
         Vector3[] touchPositions = new Vector3[Input.touches.Length];//把像素坐标存成Vector3，z为0，因为z在后边会自动忽略       
         for (int i = 0; i < Input.touches.Length; i++)
         {
