@@ -221,7 +221,7 @@ public class Breakable : MonoBehaviour
         if(recursive == 1) DestroyPiece();
         for (int i = 0; i < 4; i++)
         {
-            pieces[i].AddExplosionForce(400, transform.position - transform.up * 0.2f, 2);
+            pieces[i].AddExplosionForce(500, transform.position - transform.up * 0.2f, 2);
             pieces[i].AddForce(Vector3.back * 750);
             Breakable b = pieces[i].gameObject.AddComponent<Breakable>();
             b.recursive = recursive - 1;

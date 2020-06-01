@@ -34,6 +34,14 @@ namespace Background
             get { return PlaneActive[0]; }
             set { for (int i = 0; i < 4; i++) PlaneActive[i] = value; }
         }
+        public static bool PlanesActivity
+        {
+            get { return Self.planesActive; }
+            set
+            {
+                Self.planesActive = value;
+            }
+        }
         float[] ActiveProgress = { 1, 1, 1, 1 };
         Color[] SlideColors = new Color[12];
         #endregion
