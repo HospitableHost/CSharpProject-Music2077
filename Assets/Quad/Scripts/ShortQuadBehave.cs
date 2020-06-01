@@ -13,33 +13,16 @@ public class ShortQuadBehave : QuadBehave
     }
 
 
-    new public Ray[] getAllRaysThroughTouches()  //这个函数获得所有从相机出发，经过手机屏幕上触摸点的Unity世界中的射线
-    {
-        Vector3[] touchPositions = new Vector3[Input.touches.Length];//把像素坐标存成Vector3，z为0，因为z在后边会自动忽略       
-        for (int i = 0; i < Input.touches.Length; i++)
-        {
-            touchPositions[i].x = Input.touches[i].position.x;
-            touchPositions[i].y = Input.touches[i].position.y;
-            touchPositions[i].z = 0;
-
-            Debug.Log(touchPositions[i].x + touchPositions[i].y);
-        }
-        Ray[] allRays = new Ray[Input.touches.Length];
-        for (int i = 0; i < Input.touches.Length; i++)
-        {
-            allRays[i] = Camera.main.ScreenPointToRay(touchPositions[i]);
-            //Debug.Log(allRays[i].x + allRays[i].y + allRays[i].z);
-        }
-        return allRays;
-
-    }
 
 
     //todo:检测触摸判断
-    override public bool CheckHit(Score.Score scoreBoard)
-    {        
+    override public bool CheckHit()
+    {
+        if (this.IsValid == false) return false;//按键若失效 直接失败
+
         double borderLine = 0;//合法检测区
         int scoreLevel = 0; //表示得分的等级 5 - good     10 - perfect      0 - miss
+        int sForBar=100;
         switch (Screen.width)
         {
             case 2160: borderLine = 0.1; break;
@@ -67,7 +50,8 @@ public class ShortQuadBehave : QuadBehave
                 {
                     Debug.Log("good");
                     scoreLevel = 5;//Good
-                    this.MarkRecording(scoreBoard, scoreLevel);
+                    Score.Score.totalScore += scoreLevel * sForBar;
+                    Score.Score.goodNum += 1;
                     this.IsValid = false;//触摸一次之后按键失效处理
                     return true;
                 }
@@ -76,7 +60,8 @@ public class ShortQuadBehave : QuadBehave
                     Debug.Log("perfect");
 
                     scoreLevel = 10;//perfect 得分
-                    this.MarkRecording(scoreBoard, scoreLevel);
+                    Score.Score.totalScore += scoreLevel * sForBar;
+                    Score.Score.perfectNum += 1;
                     this.IsValid = false;//触摸一次之后按键失效处理
                     return true;
                 }
@@ -85,19 +70,21 @@ public class ShortQuadBehave : QuadBehave
                     Debug.Log("good");
 
                     scoreLevel = 5;//good得分
-                    this.MarkRecording(scoreBoard, scoreLevel);
+                    Score.Score.totalScore += scoreLevel * sForBar;
+                    Score.Score.goodNum += 1;
                     this.IsValid = false;//触摸一次之后按键失效处理
                     return true;
                 }
+                //Score.Score.missNum += 1;
                 return false;//miss
             }
-
-
         }
 
-        return false;//在触摸区内但是没有触摸
+        return false;//不应该从这里返回  前面涵盖了所有情况
 
     }
+
+
     //todo:出边界检测
     public override bool CheckOut()
     {
@@ -109,7 +96,9 @@ public class ShortQuadBehave : QuadBehave
         else
             return false;
     }
+
     //todo:统计分数加到计分板上
+    /*  函数功能合并到CheckHit（）   此函数弃用
     public void MarkRecording(Score.Score scoreBoard, int ScoreToAdd)
     {
 
@@ -127,7 +116,7 @@ public class ShortQuadBehave : QuadBehave
             scoreBoard.missNum++;
         }
 
-    }
+    }*/
 
 
 }

@@ -69,11 +69,7 @@ public class QuadBehave : MonoBehaviour
     {
         return false;
     }
-    //todo:检测触摸判断
-    virtual public bool CheckHit(Score.Score scoreBoard)
-    {
-        return false;
-    }
+
 
     virtual public bool CheckOut()
     {
