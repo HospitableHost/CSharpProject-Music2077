@@ -20,7 +20,7 @@ class LongQuadBehave : QuadBehave
 
     //这个函数根据“玩家触摸的位置”“音符条的位置”“指示音符条是否有效的变量IsValid”来决定返回值
     //这个函数还会根据“玩家触摸的位置”“音符条的位置”维护IsValid变量
-    override public bool CheckHit(Score.Score scoreBoard)
+    override public bool CheckHit()
     {       
         if (this.IsValid == false) //如果这个音符条失效了，那么玩家就不能再触发音符了，所以就没必要检测是否成功触发音符了，即我就认为没有hit到音符，即返回false
         {
@@ -36,6 +36,8 @@ class LongQuadBehave : QuadBehave
                 float zOfTailSide = m_nowPos.z + m_quad.transform.localScale.y / 2; //zOfTailSide是音符条远离按键的一边的中点的z坐标
                 if(zOfTailSide <= QuadBehave.edgePos) //音符条的尾边出了屏幕，既然整个音符条都出了屏幕，那么按键不按键都是没有hit
                 {
+                    if (!isMiss && IsValid)
+                        Score.Score.perfectNum += 1;
                     IsValid = false;
                     return false;
                 }
@@ -44,6 +46,7 @@ class LongQuadBehave : QuadBehave
                     bool ifHaveTheTouch = haveTouchOfTheTrack(this.m_note.trackNum);
                     if(ifHaveTheTouch)
                     {
+                        Score.Score.totalScore += 0.02 * 10 * MusicScore.MusicScoreManager.musicScore.scorePerSecOfNoteStrip;
                         isMiss = false;  //表示没有miss掉
                         return true;
                     }
@@ -58,6 +61,7 @@ class LongQuadBehave : QuadBehave
                     {
                         
                         IsValid = false;
+                        Score.Score.missNum += 1;
                         return false;
 
                     }
@@ -65,12 +69,14 @@ class LongQuadBehave : QuadBehave
                     {
                         bool ifHaveTheTouch = haveTouchOfTheTrack(this.m_note.trackNum);
                         if (ifHaveTheTouch)
-                        {                            
+                        {
+                            Score.Score.totalScore += 0.02 * 10 * MusicScore.MusicScoreManager.musicScore.scorePerSecOfNoteStrip;
                             return true;
                         }
                         else
                         {
                             IsValid = false;
+                            Score.Score.goodNum += 1;
                             return false;
                         }
                     }

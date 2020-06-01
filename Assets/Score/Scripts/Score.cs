@@ -6,7 +6,7 @@ namespace Score
 {
     public static class Score
     {
-        public static int totalScore { get; set; }  //总分
+        public static double totalScore { get; set; }  //总分
 
         public static int missNum { get; set; }   //miss掉的方块数
 

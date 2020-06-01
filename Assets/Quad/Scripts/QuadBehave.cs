@@ -51,7 +51,7 @@ public class QuadBehave : MonoBehaviour
             Debug.Log("checkout");
             QuadPool.Die(this.gameObject);
         }
-        else if (CheckHit(new Score.Score()))
+        else if (CheckHit())
         {
             Debug.Log("真的点中了");
             hitQuad();
