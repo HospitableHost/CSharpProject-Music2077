@@ -26,15 +26,10 @@ public class QuadPool
     public static void Die(GameObject gameObject)
     {
         gameObject.SetActive(false);
-        LongQuadBehave longB = gameObject.GetComponent<LongQuadBehave>();
-        ShortQuadBehave shortB = gameObject.GetComponent<ShortQuadBehave>();
-        if (longB != null)
+        QuadBehave behave = gameObject.GetComponent<QuadBehave>();
+        if (behave != null)
         {
-            MonoBehaviour.Destroy(longB);
-        }
-        if (shortB != null)
-        {
-            MonoBehaviour.Destroy(shortB);
+            MonoBehaviour.Destroy(behave);
         }
         pool.Push(gameObject);
     }
