@@ -7,6 +7,38 @@ public class Breakable : MonoBehaviour
     Mesh mesh;
     MeshRenderer meshRenderer;
 
+    static Stack<GameObject> piecePool = new Stack<GameObject>();
+
+    GameObject NewPiece()
+    {
+        if (piecePool.Count > 0)
+        {
+            GameObject piece = piecePool.Pop();
+            piece.SetActive(true);
+            return piece;
+        }
+        else
+        {
+            GameObject piece = new GameObject("Piece");
+            MeshCollider co = piece.AddComponent<MeshCollider>();
+            co.convex = true;
+            MeshRenderer piece_render = piece.AddComponent<MeshRenderer>();
+            piece.AddComponent<MeshFilter>();
+            Rigidbody rig = piece.AddComponent<Rigidbody>();
+            rig.useGravity = false;
+            return piece;
+        }
+    }
+    void DestroyPiece()
+    {
+        gameObject.SetActive(false);
+        piecePool.Push(gameObject);
+    }
+    void DestroyPiece(float delay)
+    {
+        Invoke("DestroyPiece", delay);
+    }
+
     [HideInInspector]
     public int recursive = 2;
     [HideInInspector]
@@ -16,6 +48,8 @@ public class Breakable : MonoBehaviour
     {
         mesh = GetComponent<MeshFilter>().mesh;
         meshRenderer = GetComponent<MeshRenderer>();
+        if (recursive == 0) DestroyPiece(2);
+        else if (recursive == 1) PieceUp();
     }
 
     int GetCoordinate(int i)
@@ -167,32 +201,24 @@ public class Breakable : MonoBehaviour
 
     private Rigidbody GeneratePiece(Mesh piece_mesh, MeshRenderer meshRenderer)
     {
-        GameObject piece = new GameObject("Piece");
-        MeshCollider co = piece.AddComponent<MeshCollider>();
-        co.convex = true;
+        GameObject piece = NewPiece();
+        MeshCollider co = piece.GetComponent<MeshCollider>();
         co.sharedMesh = piece_mesh;
         piece.transform.position = transform.position;
         piece.transform.localScale = transform.localScale;
         piece.transform.rotation = transform.rotation;
-        MeshRenderer piece_render = piece.AddComponent<MeshRenderer>();
+        piece.GetComponent<MeshFilter>().mesh = piece_mesh;
+        MeshRenderer piece_render = piece.GetComponent<MeshRenderer>();
         piece_render.material = meshRenderer.material;
-        piece.AddComponent<MeshFilter>().mesh = piece_mesh;
-        Rigidbody rig = piece.AddComponent<Rigidbody>();
-        rig.useGravity = false;
-        return rig;
+        return piece.GetComponent<Rigidbody>();
     }
 
     public void PieceUp(Vector3 breakPosition)
     {
-        if (recursive <= 0)
-        {
-            Destroy(gameObject, 2);
-            return;
-        }
         Mesh[] meshes = GenerateMesh(mesh, breakPosition);
         Rigidbody[] pieces = new Rigidbody[4];
         for (int i = 0; i < 4; i++) pieces[i] = GeneratePiece(meshes[i], meshRenderer);
-        Destroy(gameObject);
+        if(recursive == 1) DestroyPiece();
         for (int i = 0; i < 4; i++)
         {
             pieces[i].AddExplosionForce(400, transform.position - transform.up * 0.2f, 2);
@@ -214,12 +240,21 @@ public class Breakable : MonoBehaviour
                     b.breakPoint = breakPosition + mesh.vertices[1] / 2;
                     break;
             }
-            Destroy(pieces[i].gameObject, 2);
+            //Destroy(pieces[i].gameObject, 2);
         }
+    }
+
+    public void PieceUp()
+    {
+        PieceUp(breakPoint);
     }
 
     private void Update()
     {
-        if (transform.position.z <= -0.3f) PieceUp(breakPoint);
+        if (recursive == 2 && transform.position.z <= -0.3f)
+        {
+            PieceUp();
+            QuadPool.Die(gameObject);
+        }
     }
 }
