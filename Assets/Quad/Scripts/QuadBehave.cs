@@ -25,7 +25,7 @@ public class QuadBehave : MonoBehaviour
     static protected float erreurGood=0.75f, erreurPerfect=0.1875f;
 
     [SerializeField]
-    static public float m_vel = 5.0f;
+    static public float m_vel = 2.0f;
 
     static public float GoodLeft { get { return SurfacePos - erreurGood; } }
     static public float GoodRight { get { return SurfacePos + erreurGood; } }
@@ -39,7 +39,7 @@ public class QuadBehave : MonoBehaviour
     protected void Start()
     {
         m_quad = this.gameObject;
-        Background.Background.SetPositionAtTrack(transform, m_note.trackNum);
+        Background.Background.SetPositionAtTrack(transform, m_note.trackNum,this.transform.localScale.z/2);
         m_nowPos = transform.position;
     }
 
