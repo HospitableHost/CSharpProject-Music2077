@@ -50,9 +50,9 @@ public class ShooterBehave : MonoBehaviour
             Note.Note currentNote = Music[i];
             if (Time.time >= currentNote.arrivalTime-time)
             {
+                if (i == 0) Background.Background.PlanesActivity = false;
                 Shoot();
                 i++;
-
             }
         }
     }
