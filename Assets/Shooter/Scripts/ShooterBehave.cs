@@ -21,13 +21,13 @@ public class ShooterBehave : MonoBehaviour
         {
             case Note.NoteType.NoteBar:       
                 GameObject squad = QuadPool.Born(new Vector3(), new Quaternion());   //生成quad
-                squad.transform.localScale = new Vector3(2, (float)0.75, 1);
+                squad.transform.localScale = new Vector3(2, 0.02f, 0.5f);
                 ShortQuadBehave sqb = squad.AddComponent<ShortQuadBehave>();
                 sqb.Initialize((Note.Note_NoteBar)Music[i]);
                 break;
             case Note.NoteType.NoteStrip:
                 GameObject lquad = QuadPool.Born(new Vector3(), new Quaternion());   //生成quad
-                lquad.transform.localScale = new Vector3(2, ((Note.Note_NoteStrip)Music[i]).lastTime * QuadBehave.m_vel, 1);
+                lquad.transform.localScale = new Vector3(2, 0.02f,((Note.Note_NoteStrip)Music[i]).lastTime * QuadBehave.m_vel);
                 LongQuadBehave lqb = lquad.AddComponent<LongQuadBehave>();
                 lqb.Initialize((Note.Note_NoteStrip)Music[i]);
                 break;

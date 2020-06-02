@@ -21,6 +21,11 @@ namespace MusicScore
         public int scoreOfNoteBar;  //这个乐谱中音符块的分数：成功按下音符块的分数
         [DataMember(Name = "scorePerSecOfNoteStrip")]
         public int scorePerSecOfNoteStrip;  //这个乐谱中音符条每秒的分数：按下1s能加的分数
+        [DataMember(Name = "easyVel")]
+        public float easyVel;  //这个乐谱简单难度的速度
+        [DataMember(Name = "difficultVel")]
+        public float difficultVel;  //这个乐谱困难难度的速度
+
         public MusicScore()
         {
             musicScore = new List<Note.Note>();
@@ -73,7 +78,7 @@ namespace MusicScore
         public static void ImportFromJSON(string name)  //因为我们的乐谱json是放在固定文件夹里的，所以只需给个参数:文件名name就可以了，name就是文件名，把这个文件里的JSON对象：MusicScore导入，赋值给静态成员musicScore
         {
             //string filepath = Directory.GetCurrentDirectory() + "\\" + name + ".json";
-            string filepath = "E:\\GitHub本地仓库\\CSharpProject - Music2077\\Assets\\MusicScore\\MusicScores\\庆功酒\\庆功酒.json";
+            string filepath = "E://Json//qinggongjiu.json";
             if (File.Exists(filepath))
             {
                 using (FileStream fs = new FileStream(filepath, FileMode.Open))
