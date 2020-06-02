@@ -46,19 +46,18 @@ public class QuadBehave : MonoBehaviour
     // Update is called once per frame
     protected void FixedUpdate()
     {
+        if (CheckHit())
+        {
+            Debug.Log("真的点中了");
+            hitQuad();
+        }
         if (CheckOut())
         {
             Debug.Log("checkout");
             QuadPool.Die(this.gameObject);
         }
-        else if (CheckHit())
-        {
-            Debug.Log("真的点中了");
-            hitQuad();
-        }
         else
         {
-            
             m_nowPos.Set(m_nowPos.x, m_nowPos.y, m_nowPos.z - m_vel * Time.deltaTime);
             this.transform.position = m_nowPos;
         }
