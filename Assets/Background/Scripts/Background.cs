@@ -252,51 +252,51 @@ namespace Background
             switch(index)
             {
                 case 0:
-                    transform.position = new Vector3(-3.725f, -2.5f, 50.0f+ halfLength);
+                    transform.position = new Vector3(-3.725f, -2.5f, 50.0f+ halfLength-0.25f);
                     transform.rotation = Quaternion.Euler(0, 0, 0);
                     break;
                 case 1:
-                    transform.position = new Vector3(-1.125f, -2.5f, 50.0f+ halfLength);
+                    transform.position = new Vector3(-1.125f, -2.5f, 50.0f+ halfLength - 0.25f);
                     transform.rotation = Quaternion.Euler(0, 0, 0);
                     break;
                 case 2:
-                    transform.position = new Vector3(1.125f, -2.5f, 50.0f + halfLength);
+                    transform.position = new Vector3(1.125f, -2.5f, 50.0f + halfLength - 0.25f);
                     transform.rotation = Quaternion.Euler(0, 0, 0);
                     break;
                 case 3:
-                    transform.position = new Vector3(3.725f, -2.5f, 50.0f + halfLength);
+                    transform.position = new Vector3(3.725f, -2.5f, 50.0f + halfLength - 0.25f);
                     transform.rotation = Quaternion.Euler(0, 0, 0);
                     break;
                 case 4:
-                    transform.position = new Vector3(5, -1.25f, 50.0f + halfLength);
+                    transform.position = new Vector3(5, -1.25f, 50.0f + halfLength - 0.25f);
                     transform.rotation = Quaternion.Euler(0, 0, 90);
                     break;
                 case 5:
-                    transform.position = new Vector3(5, 1.25f, 50.0f + halfLength);
+                    transform.position = new Vector3(5, 1.25f, 50.0f + halfLength - 0.25f);
                     transform.rotation = Quaternion.Euler(0, 0, 90);
                     break;
                 case 6:
-                    transform.position = new Vector3(3.725f, 2.5f, 50.0f + halfLength);
+                    transform.position = new Vector3(3.725f, 2.5f, 50.0f + halfLength - 0.25f);
                     transform.rotation = Quaternion.Euler(0, 0, 180);
                     break;
                 case 7:
-                    transform.position = new Vector3(1.125f, 2.5f, 50.0f + halfLength);
+                    transform.position = new Vector3(1.125f, 2.5f, 50.0f + halfLength - 0.25f);
                     transform.rotation = Quaternion.Euler(0, 0, 180);
                     break;
                 case 8:
-                    transform.position = new Vector3(-1.125f, 2.5f, 50.0f + halfLength);
+                    transform.position = new Vector3(-1.125f, 2.5f, 50.0f + halfLength - 0.25f);
                     transform.rotation = Quaternion.Euler(0, 0, 180);
                     break;
                 case 9:
-                    transform.position = new Vector3(-3.725f, 2.5f, 50.0f + halfLength);
+                    transform.position = new Vector3(-3.725f, 2.5f, 50.0f + halfLength - 0.25f);
                     transform.rotation = Quaternion.Euler(0, 0, 180);
                     break;
                 case 10:
-                    transform.position = new Vector3(-5, 1.25f, 50.0f + halfLength);
+                    transform.position = new Vector3(-5, 1.25f, 50.0f + halfLength - 0.25f);
                     transform.rotation = Quaternion.Euler(0, 0, 270);
                     break;
                 case 11:
-                    transform.position = new Vector3(-5, -1.25f, 50.0f + halfLength);
+                    transform.position = new Vector3(-5, -1.25f, 50.0f + halfLength - 0.25f);
                     transform.rotation = Quaternion.Euler(0, 0, 270);
                     break;
                 default:
