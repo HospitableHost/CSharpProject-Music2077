@@ -21,7 +21,7 @@ class LongQuadBehave : QuadBehave
     //这个函数根据“玩家触摸的位置”“音符条的位置”“指示音符条是否有效的变量IsValid”来决定返回值
     //这个函数还会根据“玩家触摸的位置”“音符条的位置”维护IsValid变量
     override public bool CheckHit()
-    {       
+    {        
         if (this.IsValid == false) //如果这个音符条失效了，那么玩家就不能再触发音符了，所以就没必要检测是否成功触发音符了，即我就认为没有hit到音符，即返回false       
             return false;
         //如果音符条有效，那么首先要：获取玩家触摸位置和音符条的位置，然后根据（“玩家触摸位置到位”且“音符条到位”）与否做不同的事       
@@ -40,9 +40,12 @@ class LongQuadBehave : QuadBehave
         else if (zOfHeadSide >= QuadBehave.edgePos) //音符条的尾边没有出屏幕 且 音符条的首边没有出屏幕
         {
             bool ifHaveTheTouch = haveTouchOfTheTrack(this.m_note.trackNum);
+            Debug.Log("ifHaveTheTouch为"+ifHaveTheTouch);
+            //Debug.Log("这个音符条的通道为"+ this.m_note.trackNum);
             if (ifHaveTheTouch)
             {
-                Score.Score.totalScore += 0.02 * 10 * MusicScore.MusicScoreManager.musicScore.scorePerSecOfNoteStrip;
+                Debug.Log("加分");
+                Score.Score.totalScore += 0.02f * 10.0f * MusicScore.MusicScoreManager.musicScore.scorePerSecOfNoteStrip;
                 isMiss = false;  //表示没有miss掉
                 return true;
             }             
@@ -54,7 +57,7 @@ class LongQuadBehave : QuadBehave
         {
             if (isMiss)//如果miss掉了音符条，那么音符条失效，同时也是没有hit到
             {
-
+                //Debug.Log("音符条miss");
                 IsValid = false;
                 Score.Score.missNum += 1;
                 return false;
@@ -65,7 +68,8 @@ class LongQuadBehave : QuadBehave
                 bool ifHaveTheTouch = haveTouchOfTheTrack(this.m_note.trackNum);
                 if (ifHaveTheTouch)
                 {
-                    Score.Score.totalScore += 0.02 * 10 * MusicScore.MusicScoreManager.musicScore.scorePerSecOfNoteStrip;
+                    Debug.Log("加分");
+                    Score.Score.totalScore += 0.02f * 10.0f * MusicScore.MusicScoreManager.musicScore.scorePerSecOfNoteStrip;
                     return true;
                 }
                 else

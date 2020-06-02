@@ -249,12 +249,12 @@ public class Breakable : MonoBehaviour
         PieceUp(breakPoint);
     }
 
-    private void Update()
+    /*private void Update()
     {
         if (recursive == 2 && transform.position.z <= -0.3f)
         {
             PieceUp();
             QuadPool.Die(gameObject);
         }
-    }
+    }*/
 }
