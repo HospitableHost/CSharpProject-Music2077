@@ -46,7 +46,7 @@ public class ShooterBehave : MonoBehaviour
     }   
     void FixedUpdate()    //根据时间判断发射与否
     {       
-        if (i < Music.Count())
+        if (i < Music.Count)
         {       
             Note.Note currentNote = Music[i];
             if (Time.time >= currentNote.arrivalTime-time)
