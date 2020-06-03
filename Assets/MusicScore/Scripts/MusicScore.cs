@@ -78,7 +78,7 @@ namespace MusicScore
         public static void ImportFromJSON(string name)  //因为我们的乐谱json是放在固定文件夹里的，所以只需给个参数:文件名name就可以了，name就是文件名，把这个文件里的JSON对象：MusicScore导入，赋值给静态成员musicScore
         {
             //string filepath = Directory.GetCurrentDirectory() + "\\" + name + ".json";
-            string filepath = "E://Json//qinggongjiu.json";
+            string filepath = "Assets\\MusicScore\\MusicScores\\chaoming\\chaoming.json";
             if (File.Exists(filepath))
             {
                 using (FileStream fs = new FileStream(filepath, FileMode.Open))
