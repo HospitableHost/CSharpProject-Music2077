@@ -82,6 +82,8 @@ public class ShortQuadBehave : QuadBehave
                     scoreLevel = 0.5f;//Good
                     Score.Score.totalScore += scoreLevel * sForBar;
                     Score.Score.goodNum += 1;
+                    GetComponent<Breakable>().PieceUp();
+                    QuadPool.Die(gameObject);
                     this.IsValid = false;//触摸一次之后按键失效处理
                     return true;
                 }
@@ -92,6 +94,8 @@ public class ShortQuadBehave : QuadBehave
                     scoreLevel = 1f;//perfect 得分
                     Score.Score.totalScore += scoreLevel * sForBar;
                     Score.Score.perfectNum += 1;
+                    GetComponent<Breakable>().PieceUp();
+                    QuadPool.Die(gameObject);
                     this.IsValid = false;//触摸一次之后按键失效处理
                     return true;
                 }
@@ -102,6 +106,8 @@ public class ShortQuadBehave : QuadBehave
                     scoreLevel = 0.5f;//good得分
                     Score.Score.totalScore += scoreLevel * sForBar;
                     Score.Score.goodNum += 1;
+                    GetComponent<Breakable>().PieceUp();
+                    QuadPool.Die(gameObject);
                     this.IsValid = false;//触摸一次之后按键失效处理
                     return true;
                 }
