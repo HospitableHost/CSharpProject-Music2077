@@ -18,5 +18,11 @@ public class Filler : MonoBehaviour
     {
         float a = Mathf.Clamp01((parent.position.z + parent.lossyScale.z * 0.5f - boundary) / parent.lossyScale.z) * 0.875f;
         transform.localScale = new Vector3(a, 1, 1);
+        if(a <= 0.0875f)
+        {
+            parent.GetComponent<Breakable>().PieceUp(new Vector3(0, 0, 0.4f));
+            QuadPool.Die(parent.gameObject);
+            QuadMaterial.OnLeave(parent.gameObject);
+        }
     }
 }
