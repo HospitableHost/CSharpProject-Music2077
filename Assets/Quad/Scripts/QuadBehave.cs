@@ -23,7 +23,7 @@ public class QuadBehave : MonoBehaviour
     static protected float erreurGood=0.75f, erreurPerfect=0.1875f;
 
   
-    static public float m_vel = Settings.Settings.velocity;
+    static public float m_vel = 0.0f;
 
     static public float GoodLeft { get { return Settings.Settings.SurfacePos - erreurGood; } }
     static public float GoodRight { get { return Settings.Settings.SurfacePos + erreurGood; } }
@@ -56,9 +56,6 @@ public class QuadBehave : MonoBehaviour
             Debug.Log("checkout");
             QuadPool.Die(this.gameObject);
         }
-        
-        
-
         
     }
 

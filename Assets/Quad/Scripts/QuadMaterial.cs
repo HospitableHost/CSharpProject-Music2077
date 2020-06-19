@@ -34,6 +34,7 @@ public class QuadMaterial
 
     public static void OnTouch(GameObject quad)
     {
+        if (quad.transform.childCount > 0) return;
         quad.GetComponent<MeshRenderer>().sharedMaterial = fillMat;
         CreateFiller(quad.transform);
     }

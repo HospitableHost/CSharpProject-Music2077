@@ -22,7 +22,7 @@ public class ShortQuadBehave : QuadBehave
 
         double borderLine = 0;//合法检测区
         int scoreLevel = 0; //表示得分的等级 5 - good     10 - perfect      0 - miss
-        int sForBar=100;
+        int sForBar= MusicScore.MusicScoreManager.musicScore.scorePerSecOfNoteStrip;
         switch (Screen.width)
         {
             case 2160: borderLine = 0.1; break;
@@ -40,12 +40,17 @@ public class ShortQuadBehave : QuadBehave
 
 
             RaycastHit result;
-
-            if (Physics.Raycast(ray, out result))
+            int layerMask = 1<<8;
+            if (Physics.Raycast(ray, out result,100, layerMask))
             {
-                double distance = this.m_nowPos.z;//获取按键的y坐标
+                Debug.Log("hitttttttttttttttttttttttttttttttttttttttttttt");
+
+                //double distance = this.m_nowPos.z;//获取按键的y坐标
+                double distance = result.point.z;
+                Debug.Log(distance);
+                Debug.Log(this.m_nowPos.z);
                 if (distance > borderLine) return false;//在合法触摸区之外 直接返回
-                
+
                 if (distance < GoodRight && distance > PerfectRight)
                 {
                     Debug.Log("good");
