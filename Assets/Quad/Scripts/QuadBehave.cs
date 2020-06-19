@@ -99,8 +99,7 @@ public class QuadBehave : MonoBehaviour
         {
             allRays[i] = Camera.main.ScreenPointToRay(touchPositions[i]);
         }
-        return allRays;
-        
+        return allRays;    
     }
 
     static bool[] trackStates = new bool[12];
