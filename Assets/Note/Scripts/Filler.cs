@@ -6,9 +6,10 @@ public class Filler : MonoBehaviour
 {
     Transform parent;
     [SerializeField]
-    float boundary = 0.7f;
+    float boundary => Screen.width == 2160 ? 0.1f : 0.7f;
 
-    private void OnEnable()
+
+private void OnEnable()
     {
         parent = transform.parent;
     } 
