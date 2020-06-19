@@ -8,6 +8,6 @@ public class AboutUsManager : MonoBehaviour
     public void AboutUsOnClick(string sceneName)
     {
         //Application.LoadLevel(sceneName);
-        SceneManager.LoadScene("sceneName");
+        SceneManager.LoadScene(sceneName);
     }
 }
