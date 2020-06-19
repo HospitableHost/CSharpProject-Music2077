@@ -25,6 +25,11 @@ public class SelectSongManager : MonoBehaviour
         SceneManager.LoadScene("Menu");
     }
 
+    static public void imageButton(string songName)
+    {
+        Settings.Settings.ChosenSong = songName;
+    }
+
     public void startBtnOnClick()
     {
         switch (Screen.width)
