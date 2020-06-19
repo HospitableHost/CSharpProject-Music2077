@@ -40,12 +40,17 @@ public class ShortQuadBehave : QuadBehave
 
 
             RaycastHit result;
-            int layerMask = ~(1<<0);
-            if (Physics.Raycast(ray, out result, layerMask))
+            int layerMask = 1<<8;
+            if (Physics.Raycast(ray, out result,100, layerMask))
             {
-                double distance = this.m_nowPos.z;//获取按键的y坐标
+                Debug.Log("hitttttttttttttttttttttttttttttttttttttttttttt");
+
+                //double distance = this.m_nowPos.z;//获取按键的y坐标
+                double distance = result.point.z;
+                Debug.Log(distance);
+                Debug.Log(this.m_nowPos.z);
                 if (distance > borderLine) return false;//在合法触摸区之外 直接返回
-                
+
                 if (distance < GoodRight && distance > PerfectRight)
                 {
                     Debug.Log("good");
