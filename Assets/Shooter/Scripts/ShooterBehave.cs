@@ -38,7 +38,7 @@ public class ShooterBehave : MonoBehaviour
            
     void Start()    //初始化游戏的时间和乐谱音符计数
     {
-        MusicScore.MusicScoreManager.ImportFromJSON("chaoming");
+        MusicScore.MusicScoreManager.ImportFromJSON(Settings.Settings.ChosenSong);
         this.ImportMusic(MusicScore.MusicScoreManager.musicScore.musicScore);
         switch (Settings.Settings.difficulty)
         {
@@ -55,7 +55,6 @@ public class ShooterBehave : MonoBehaviour
                 QuadBehave.m_vel = Settings.Settings.velocity;
                 break;
         }
-        Debug.Log("速度："+Settings.Settings.velocity);
         i = 0;
         time = 50 / QuadBehave.m_vel;
     }   
