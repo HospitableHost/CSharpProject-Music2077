@@ -7,7 +7,7 @@ public class MainMenuManager : MonoBehaviour
 {
     public void StartGameOnClick(string sceneName)
     {
-        Application.LoadLevel(sceneName);
+        //Application.LoadLevel(sceneName);
         SceneManager.LoadScene("sceneName");
     }
 }
