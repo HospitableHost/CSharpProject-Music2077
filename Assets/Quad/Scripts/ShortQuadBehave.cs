@@ -20,15 +20,15 @@ public class ShortQuadBehave : QuadBehave
     {
         if (this.IsValid == false) return false;//按键若失效 直接失败
 
-        double borderLine = 0;//合法检测区
-        int scoreLevel = 0; //表示得分的等级 5 - good     10 - perfect      0 - miss
-        int sForBar= MusicScore.MusicScoreManager.musicScore.scorePerSecOfNoteStrip;
+        float borderLine = 0;//合法检测区
+        float scoreLevel = 0; //表示得分的等级 5 - good     10 - perfect      0 - miss
+        float sForBar= MusicScore.MusicScoreManager.musicScore.scorePerSecOfNoteStrip;
         switch (Screen.width)
         {
-            case 2160: borderLine = 1.7; break;
-            case 1920: borderLine = 1.5; break;
+            case 2160: borderLine = 1.7f; break;
+            case 1920: borderLine = 1.5f; break;
             default:
-                borderLine = 1.5;
+                borderLine = 1.5f;
                 break;
         }
         //Vector3 CameraPos = new Vector3(0, 0, -5);//摄像机的世界坐标
@@ -47,15 +47,15 @@ public class ShortQuadBehave : QuadBehave
             {
                 Debug.Log("hitttttttttttttttttttttttttttttttttttttttttttt");
                 Debug.Log(GoodRight+":" +GoodLeft+":" + PerfectLeft+":" + PerfectRight);
-                //double distance = this.m_nowPos.z;//获取按键的y坐标
-                double distance = result.point.z;
+                //float distance = this.m_nowPos.z;//获取按键的y坐标
+                float distance = result.point.z;
                 Debug.Log(distance);
                 if (distance > borderLine) return false;//在合法触摸区之外 直接返回
 
                 if (distance < GoodRight && distance > PerfectRight)
                 {
                     Debug.Log("good");
-                    scoreLevel = 0.5;//Good
+                    scoreLevel = 0.5f;//Good
                     Score.Score.totalScore += scoreLevel * sForBar;
                     Score.Score.goodNum += 1;
                     this.IsValid = false;//触摸一次之后按键失效处理
@@ -65,7 +65,7 @@ public class ShortQuadBehave : QuadBehave
                 {
                     Debug.Log("perfect");
 
-                    scoreLevel = 1;//perfect 得分
+                    scoreLevel = 1f;//perfect 得分
                     Score.Score.totalScore += scoreLevel * sForBar;
                     Score.Score.perfectNum += 1;
                     this.IsValid = false;//触摸一次之后按键失效处理
@@ -75,7 +75,7 @@ public class ShortQuadBehave : QuadBehave
                 {
                     Debug.Log("good");
 
-                    scoreLevel = 0.5;//good得分
+                    scoreLevel = 0.5f;//good得分
                     Score.Score.totalScore += scoreLevel * sForBar;
                     Score.Score.goodNum += 1;
                     this.IsValid = false;//触摸一次之后按键失效处理
