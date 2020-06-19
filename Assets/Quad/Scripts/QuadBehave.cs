@@ -22,8 +22,8 @@ public class QuadBehave : MonoBehaviour
     [SerializeField]
     static protected float erreurGood=0.75f, erreurPerfect=0.1875f;
 
-    [SerializeField]
-    static public float m_vel = 50.0f;
+  
+    static public float m_vel = Settings.Settings.velocity;
 
     static public float GoodLeft { get { return Settings.Settings.SurfacePos - erreurGood; } }
     static public float GoodRight { get { return Settings.Settings.SurfacePos + erreurGood; } }
