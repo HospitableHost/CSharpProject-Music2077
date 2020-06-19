@@ -13,7 +13,7 @@ public class CountDown : MonoBehaviour
     {
         AS = gameObject.GetComponent<AudioSource>();
         AS.clip = Resources.Load<AudioClip>(Settings.Settings.ChosenSong);
-        Debug.Log("having readyToStart");
+
         GameObject q = Resources.Load<GameObject>("Prefabs/number1Text");
         number1 = MonoBehaviour.Instantiate(q, new Vector3(0, 0, 50.0f), new Quaternion());
 
@@ -30,13 +30,12 @@ public class CountDown : MonoBehaviour
     }
     public IEnumerator Count()
     {
-        Debug.Log(number1);
-        number1.transform.position.Set(0, 0, 50);
-        number2.transform.position.Set(0, 0, 50);
-        number3.transform.position.Set(0, 0, 50);
-        start.transform.position.Set(0, 0, 50);
+        number1.transform.position = new Vector3(0, 0, 50);
+        number2.transform.position = new Vector3(0, 0, 50);
+        number3.transform.position = new Vector3(0, 0, 50);
+        start.transform.position = new Vector3(0, 0, 50);
         Time.timeScale = 0;
-        Debug.Log("Count start");
+
         for (float t = 0; t <= 55.0f; t += 1f)
         {
             number3.transform.position -= new Vector3(0, 0, 1f);

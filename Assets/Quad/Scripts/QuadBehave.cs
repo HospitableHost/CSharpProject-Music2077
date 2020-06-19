@@ -86,7 +86,7 @@ public class QuadBehave : MonoBehaviour
 
     public Ray[] getAllRaysThroughTouches()  //这个函数获得所有从相机出发，经过手机屏幕上触摸点的Unity世界中的射线
     {
-        Debug.Log("触摸个数"+Input.touches.Length);
+        //Debug.Log("触摸个数"+Input.touches.Length);
         Vector3[] touchPositions = new Vector3[Input.touches.Length];//把像素坐标存成Vector3，z为0，因为z在后边会自动忽略       
         for (int i = 0; i < Input.touches.Length; i++)
         {

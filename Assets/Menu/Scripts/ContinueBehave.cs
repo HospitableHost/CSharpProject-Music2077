@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class ContinueBehave : MonoBehaviour
 {
-    CountDown count = new CountDown();
+    CountDown count;
+
+    private void Start()
+    {
+        count = GameObject.Find("MusicPlayer").GetComponent<CountDown>();    
+    }
+
     public void ContinueOnClick(GameObject canvas)
     {
         canvas.SetActive(false);
