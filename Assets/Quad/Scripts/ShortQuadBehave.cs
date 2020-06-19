@@ -55,7 +55,7 @@ public class ShortQuadBehave : QuadBehave
                 if (distance < GoodRight && distance > PerfectRight)
                 {
                     Debug.Log("good");
-                    scoreLevel = 5;//Good
+                    scoreLevel = 0.5;//Good
                     Score.Score.totalScore += scoreLevel * sForBar;
                     Score.Score.goodNum += 1;
                     this.IsValid = false;//触摸一次之后按键失效处理
@@ -65,7 +65,7 @@ public class ShortQuadBehave : QuadBehave
                 {
                     Debug.Log("perfect");
 
-                    scoreLevel = 10;//perfect 得分
+                    scoreLevel = 1;//perfect 得分
                     Score.Score.totalScore += scoreLevel * sForBar;
                     Score.Score.perfectNum += 1;
                     this.IsValid = false;//触摸一次之后按键失效处理
@@ -75,7 +75,7 @@ public class ShortQuadBehave : QuadBehave
                 {
                     Debug.Log("good");
 
-                    scoreLevel = 5;//good得分
+                    scoreLevel = 0.5;//good得分
                     Score.Score.totalScore += scoreLevel * sForBar;
                     Score.Score.goodNum += 1;
                     this.IsValid = false;//触摸一次之后按键失效处理
