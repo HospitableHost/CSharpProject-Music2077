@@ -5,7 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
-
+using Settings;
+using UnityEngine.UI;
 
 class LongQuadBehave : QuadBehave
 { 
@@ -18,6 +19,29 @@ class LongQuadBehave : QuadBehave
         currentNoteStrip = note;
     }
 
+    private new void Start()
+    {
+        m_quad = this.gameObject;
+        Background.Background.SetPositionAtTrack(transform, m_note.trackNum, this.transform.localScale.z / 2);
+        m_nowPos = transform.position;
+        QuadMaterial.OnLeave(this.gameObject);
+    }
+
+    private new void FixedUpdate()
+    {
+        m_nowPos.Set(m_nowPos.x, m_nowPos.y, m_nowPos.z - m_vel * Time.deltaTime);
+        this.transform.position = m_nowPos;
+        if (CheckHit())
+        {
+            Debug.Log("真的点中了");
+            QuadMaterial.OnTouch(this.gameObject);
+        }
+        if (CheckOut())
+        {
+            QuadPool.Die(this.gameObject);
+        }
+
+    }
     //这个函数根据“玩家触摸的位置”“音符条的位置”“指示音符条是否有效的变量IsValid”来决定返回值
     //这个函数还会根据“玩家触摸的位置”“音符条的位置”维护IsValid变量
     override public bool CheckHit()
@@ -26,18 +50,18 @@ class LongQuadBehave : QuadBehave
             return false;
         //如果音符条有效，那么首先要：获取玩家触摸位置和音符条的位置，然后根据（“玩家触摸位置到位”且“音符条到位”）与否做不同的事       
         float zOfHeadSide = m_nowPos.z - m_quad.transform.localScale.z / 2; //zOfHeadSide是音符条靠近按键的一边的中点的z坐标
-        if (zOfHeadSide >= QuadBehave.SurfacePos) //如果这个音符条的头压根还没到变色面，那么按键不按键都是没有hit到
+        if (zOfHeadSide >= Settings.Settings.SurfacePos) //如果这个音符条的头压根还没到变色面，那么按键不按键都是没有hit到
             return false;
         //音符条的头已经过了变色面，即音符条的一部分变色了
         float zOfTailSide = m_nowPos.z + m_quad.transform.localScale.z / 2; //zOfTailSide是音符条远离按键的一边的中点的z坐标
-        if (zOfTailSide <= QuadBehave.edgePos) //音符条的尾边出了屏幕，既然整个音符条都出了屏幕，那么按键不按键都是没有hit
+        if (zOfTailSide <= Settings.Settings.edgePos) //音符条的尾边出了屏幕，既然整个音符条都出了屏幕，那么按键不按键都是没有hit
         {
             if (!isMiss && IsValid)
                 Score.Score.perfectNum += 1;
             IsValid = false;
             return false;
         }
-        else if (zOfHeadSide >= QuadBehave.edgePos) //音符条的尾边没有出屏幕 且 音符条的首边没有出屏幕
+        else if (zOfHeadSide >= Settings.Settings.edgePos) //音符条的尾边没有出屏幕 且 音符条的首边没有出屏幕
         {
             bool ifHaveTheTouch = haveTouchOfTheTrack(this.m_note.trackNum);
             Debug.Log("ifHaveTheTouch为"+ifHaveTheTouch);
@@ -74,6 +98,7 @@ class LongQuadBehave : QuadBehave
                 }
                 else
                 {
+                    QuadMaterial.OnLeave(gameObject);
                     IsValid = false;
                     Score.Score.goodNum += 1;
                     return false;

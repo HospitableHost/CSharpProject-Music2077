@@ -7,7 +7,7 @@ public class Breakable : MonoBehaviour
     Mesh mesh;
     MeshRenderer meshRenderer;
 
-    static Stack<GameObject> piecePool = new Stack<GameObject>();
+    public static Stack<GameObject> piecePool = new Stack<GameObject>();
 
     GameObject NewPiece()
     {
@@ -29,12 +29,12 @@ public class Breakable : MonoBehaviour
             return piece;
         }
     }
-    void DestroyPiece()
+    public void DestroyPiece()
     {
         gameObject.SetActive(false);
         piecePool.Push(gameObject);
     }
-    void DestroyPiece(float delay)
+    public void DestroyPiece(float delay)
     {
         Invoke("DestroyPiece", delay);
     }
@@ -44,7 +44,7 @@ public class Breakable : MonoBehaviour
     [HideInInspector]
     public Vector3 breakPoint = Vector3.zero;
 
-    private void Start()
+    public void Initialize()
     {
         mesh = GetComponent<MeshFilter>().mesh;
         meshRenderer = GetComponent<MeshRenderer>();
@@ -52,34 +52,15 @@ public class Breakable : MonoBehaviour
         else if (recursive == 1) PieceUp();
     }
 
-    int GetCoordinate(int i)
+    private void Start()
     {
-        switch (i)
-        {
-            case 5:
-            case 7:
-            case 11:
-            case 15:
-            case 18:
-            case 19:
-                return 0;
-            case 4:
-            case 6:
-            case 10:
-            case 12:
-            case 20:
-            case 21:
-                return 1;
-            case 0:
-            case 2:
-            case 8:
-            case 13:
-            case 22:
-            case 23:
-                return 2;
-            default:
-                return 3;
-        }
+        Initialize();
+    }
+
+    static int[] Coordinates = {2,3,2,3,1,0,1,0,2,3,1,0,1,2,3,0,3,3,0,0,1,1,2,2};
+    static int GetCoordinate(int i)
+    {
+        return Coordinates[i];
     }
 
     private Mesh[] GenerateMesh(Mesh mesh, Vector3 breakPoint)

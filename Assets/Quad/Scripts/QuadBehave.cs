@@ -17,20 +17,18 @@ public class QuadBehave : MonoBehaviour
     protected GameObject m_quad;
 
     protected Note.Note m_note = new Note.Note(NoteType.NoteStrip,10,2);
-    [SerializeField]
-    static public float SurfacePos { get; set; } = 0.5f;//2160×1080的变色面在z=0.5   1920×1080的变色面在z=0.7
-    [SerializeField]
-    static public float edgePos { get; set; } = -0.66f;//这是屏幕边缘平面，当quad的远离按键的一边的中点的z坐标小于它时，quad就完全不见了。2160*1080时为z=-0.66；1920*1080时为z=-0.12
+    
+    
     [SerializeField]
     static protected float erreurGood=0.75f, erreurPerfect=0.1875f;
 
-    [SerializeField]
-    static public float m_vel = 50.0f;
+  
+    static public float m_vel = 0.0f;
 
-    static public float GoodLeft { get { return SurfacePos - erreurGood; } }
-    static public float GoodRight { get { return SurfacePos + erreurGood; } }
-    static public float PerfectLeft { get { return SurfacePos - erreurPerfect; } }
-    static public float PerfectRight { get { return SurfacePos + erreurPerfect; } }
+    static public float GoodLeft { get { return Settings.Settings.SurfacePos - 2 * erreurGood; } }
+    static public float GoodRight { get { return Settings.Settings.SurfacePos + erreurGood; } }
+    static public float PerfectLeft { get { return Settings.Settings.SurfacePos - 6 * erreurPerfect; } }
+    static public float PerfectRight { get { return Settings.Settings.SurfacePos - erreurPerfect; } }
 
     //use this to init
     virtual public void Initialize(Note.Note note) { }
@@ -58,9 +56,6 @@ public class QuadBehave : MonoBehaviour
             Debug.Log("checkout");
             QuadPool.Die(this.gameObject);
         }
-        
-        
-
         
     }
 
@@ -104,14 +99,16 @@ public class QuadBehave : MonoBehaviour
         {
             allRays[i] = Camera.main.ScreenPointToRay(touchPositions[i]);
         }
-        return allRays;
-        
+        return allRays;    
     }
 
+    static bool[] trackStates = new bool[12];
+    public static bool frameChecked = false;
 
     //判断是否按下了指定通道的按键,tracknum是要判断的哪个通道上的按键
     public bool haveTouchOfTheTrack(int tracknum)
     {
+        if (frameChecked) return trackStates[tracknum];
         Ray[] allRays = this.getAllRaysThroughTouches();
         RaycastHit[] raycastHits = new RaycastHit[allRays.Length];
         Vector3[] touchPositions = new Vector3[allRays.Length];//这个数组存放射线与墙壁碰撞点
@@ -125,99 +122,23 @@ public class QuadBehave : MonoBehaviour
             else
                 touchPositions[i] = new Vector3(100, 100, 100);//没什么影响，肯定判断出来是没按下按键
         }
-        switch (tracknum)
+        for (int i = 0; i < 12; i++) trackStates[i] = false;
+        foreach (Vector3 touch in touchPositions)
         {
-            case 0:
-                foreach (Vector3 touch in touchPositions)
-                {
-                    if (touch.z < QuadBehave.SurfacePos && touch.x > -5 && touch.x < -2.5 && touch.y == -2.6f)
-                        return true;
-                }
-                return false;
-            case 1:
-                foreach (Vector3 touch in touchPositions)
-                {
-                    if (touch.z < QuadBehave.SurfacePos && touch.x > -2.5 && touch.x < 0 && touch.y == -2.6f)
-                    {                        
-                        return true;
-                    }
-                        
-                }                
-                return false;
-            case 2:
-                foreach (Vector3 touch in touchPositions)
-                {
-                    if (touch.z < QuadBehave.SurfacePos && touch.x > 0 && touch.x < 2.5 && touch.y == -2.6f)
-                        return true;
-                }
-                return false;
-            case 3:
-                foreach (Vector3 touch in touchPositions)
-                {
-                    if (touch.z < QuadBehave.SurfacePos && touch.x > 2.5 && touch.x < 5 && touch.y == -2.6f)
-                        return true;
-                }
-                return false;
-            case 4:
-                foreach (Vector3 touch in touchPositions)
-                {                                        
-                    if (touch.z < QuadBehave.SurfacePos && touch.y > -2.5 && touch.y < 0 && Math.Abs(touch.x - 5.099999f)<0.000001 )
-                        return true;
-                }
-                return false;
-            case 5:
-                foreach (Vector3 touch in touchPositions)
-                {
-                    if (touch.z < QuadBehave.SurfacePos && touch.y > 0 && touch.y < 2.5 && touch.x == 5.1f)
-                        return true;
-                }
-                return false;
-            case 6:
-                foreach (Vector3 touch in touchPositions)
-                {
-                    if (touch.z < QuadBehave.SurfacePos && touch.x > 2.5 && touch.x < 5 && touch.y == 2.6f)
-                        return true;
-                }
-                return false;
-            case 7:
-                foreach (Vector3 touch in touchPositions)
-                {
-                    if (touch.z < QuadBehave.SurfacePos && touch.x > 0 && touch.x < 2.5 && touch.y == 2.6f)
-                        return true;
-                }
-                return false;
-            case 8:
-                foreach (Vector3 touch in touchPositions)
-                {
-                    if (touch.z < QuadBehave.SurfacePos && touch.x > -2.5 && touch.x < 0 && touch.y == 2.6f)
-                        return true;
-                }
-                return false;
-            case 9:
-                foreach (Vector3 touch in touchPositions)
-                {
-                    if (touch.z < QuadBehave.SurfacePos && touch.x > -5 && touch.x < -2.5 && touch.y == 2.6f)
-                        return true;
-                }
-                return false;
-            case 10:
-                foreach (Vector3 touch in touchPositions)
-                {
-                    if (touch.z < QuadBehave.SurfacePos && touch.y > 0 && touch.y < 2.5 && touch.x == -5.1f)
-                        return true;
-                }
-                return false;
-            case 11:
-                foreach (Vector3 touch in touchPositions)
-                {
-                    if (touch.z < QuadBehave.SurfacePos && touch.y > -2.5 && touch.y < 0 && (Math.Abs(touch.x + 5.099999f) < 0.000001))
-                        return true;
-                }
-                return false;
-            default:
-                return false;
+            if(touch.z < Settings.Settings.SurfacePos && touch.x > -5 && touch.x < -2.5 && touch.y == -2.6f) trackStates[0] = true;
+            if (touch.z < Settings.Settings.SurfacePos && touch.x > -2.5 && touch.x < 0 && touch.y == -2.6f) trackStates[1] = true;
+            if (touch.z < Settings.Settings.SurfacePos && touch.x > 0 && touch.x < 2.5 && touch.y == -2.6f) trackStates[2] = true;
+            if (touch.z < Settings.Settings.SurfacePos && touch.x > 2.5 && touch.x < 5 && touch.y == -2.6f) trackStates[3] = true;
+            if (touch.z < Settings.Settings.SurfacePos && touch.y > -2.5 && touch.y < 0 && Math.Abs(touch.x - 5.099999f) < 0.000001) trackStates[4] = true;
+            if (touch.z < Settings.Settings.SurfacePos && touch.y > 0 && touch.y < 2.5 && touch.x == 5.1f) trackStates[5] = true;
+            if (touch.z < Settings.Settings.SurfacePos && touch.x > 2.5 && touch.x < 5 && touch.y == 2.6f) trackStates[6] = true;
+            if (touch.z < Settings.Settings.SurfacePos && touch.x > 0 && touch.x < 2.5 && touch.y == 2.6f) trackStates[7] = true;
+            if (touch.z < Settings.Settings.SurfacePos && touch.x > -2.5 && touch.x < 0 && touch.y == 2.6f) trackStates[8] = true;
+            if (touch.z < Settings.Settings.SurfacePos && touch.x > -5 && touch.x < -2.5 && touch.y == 2.6f) trackStates[9] = true;
+            if (touch.z < Settings.Settings.SurfacePos && touch.y > 0 && touch.y < 2.5 && touch.x == -5.1f) trackStates[10] = true;
+            if (touch.z < Settings.Settings.SurfacePos && touch.y > -2.5 && touch.y < 0 && (Math.Abs(touch.x + 5.099999f) < 0.000001)) trackStates[11] = true;
         }
-
+        return trackStates[tracknum];
     }
 }
 

@@ -6,7 +6,6 @@ using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class ShooterBehave : MonoBehaviour
@@ -39,8 +38,24 @@ public class ShooterBehave : MonoBehaviour
            
     void Start()    //初始化游戏的时间和乐谱音符计数
     {
-        MusicScore.MusicScoreManager.ImportFromJSON("");
+        MusicScore.MusicScoreManager.ImportFromJSON("chaoming");
         this.ImportMusic(MusicScore.MusicScoreManager.musicScore.musicScore);
+        switch (Settings.Settings.difficulty)
+        {
+            case Settings.Difficulty.easy:
+                Settings.Settings.velocity = MusicScore.MusicScoreManager.musicScore.easyVel;
+                QuadBehave.m_vel = Settings.Settings.velocity;
+                break;
+            case Settings.Difficulty.difficult:
+                Settings.Settings.velocity = MusicScore.MusicScoreManager.musicScore.difficultVel;
+                QuadBehave.m_vel = Settings.Settings.velocity;
+                break;
+            default:
+                Settings.Settings.velocity = MusicScore.MusicScoreManager.musicScore.easyVel;
+                QuadBehave.m_vel = Settings.Settings.velocity;
+                break;
+        }
+        Debug.Log("速度："+Settings.Settings.velocity);
         i = 0;
         time = 50 / QuadBehave.m_vel;
     }   
