@@ -41,6 +41,17 @@ public class ShooterBehave : MonoBehaviour
     {
         MusicScore.MusicScoreManager.ImportFromJSON("");
         this.ImportMusic(MusicScore.MusicScoreManager.musicScore.musicScore);
+        switch (Settings.Settings.difficulty)
+        {
+            case Settings.Difficulty.easy:
+                Settings.Settings.velocity = MusicScore.MusicScoreManager.musicScore.easyVel;
+                break;
+            case Settings.Difficulty.difficult:
+                Settings.Settings.velocity = MusicScore.MusicScoreManager.musicScore.difficultVel;
+                break;
+            default:
+                break;
+        }
         i = 0;
         time = 50 / QuadBehave.m_vel;
     }   
