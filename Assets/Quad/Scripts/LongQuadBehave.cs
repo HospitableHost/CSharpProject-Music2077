@@ -38,7 +38,6 @@ class LongQuadBehave : QuadBehave
         }
         if (CheckOut())
         {
-            Debug.Log("checkout");
             QuadPool.Die(this.gameObject);
         }
 
