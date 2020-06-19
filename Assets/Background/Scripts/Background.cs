@@ -103,8 +103,8 @@ namespace Background
             for (int i = 0; i < 12; i++)
             {
                 float h, s, v;
-                Color.RGBToHSV(Self.Slides[i].GetColor("_SpecColor"), out h, out s, out v);
-                Self.Slides[i].SetColor("_SpecColor",Color.HSVToRGB(h, s, intensity));
+                Color.RGBToHSV(Self.Slides[i].GetColor("_Specular"), out h, out s, out v);
+                Self.Slides[i].SetColor("_Specular", Color.HSVToRGB(h, s, intensity));
             }
         }
         #endregion

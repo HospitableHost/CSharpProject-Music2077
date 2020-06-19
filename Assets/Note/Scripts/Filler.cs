@@ -21,7 +21,7 @@ private void OnEnable()
         transform.localScale = new Vector3(a, 1, 1);
         if(a <= 0.0875f)
         {
-            parent.GetComponent<Breakable>().PieceUp(new Vector3(0, 0, 0.4f));
+            parent.GetComponent<Breakable>().PieceUp(new Vector3(0, 0, 0.3f));
             QuadPool.Die(parent.gameObject);
             QuadMaterial.OnLeave(parent.gameObject);
         }

@@ -21,7 +21,7 @@ public class SelectSongManager : MonoBehaviour
     }
     public void backBtnOnClick()
     {
-        Application.LoadLevel("Menu");
+        //Application.LoadLevel("Menu");
         SceneManager.LoadScene("Menu");
     }
 
@@ -46,7 +46,7 @@ public class SelectSongManager : MonoBehaviour
                 break;
         }
 
-        Application.LoadLevel("Main");
+        //Application.LoadLevel("Main");
         SceneManager.LoadScene("Main");
 
 

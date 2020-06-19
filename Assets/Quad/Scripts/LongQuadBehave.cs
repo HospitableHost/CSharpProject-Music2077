@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using Settings;
-using UnityEditor.UI;
+using UnityEngine.UI;
 
 class LongQuadBehave : QuadBehave
 { 
@@ -19,7 +19,7 @@ class LongQuadBehave : QuadBehave
         currentNoteStrip = note;
     }
 
-    private void Start()
+    private new void Start()
     {
         m_quad = this.gameObject;
         Background.Background.SetPositionAtTrack(transform, m_note.trackNum, this.transform.localScale.z / 2);
@@ -27,7 +27,7 @@ class LongQuadBehave : QuadBehave
         QuadMaterial.OnLeave(this.gameObject);
     }
 
-    private void FixedUpdate()
+    private new void FixedUpdate()
     {
         m_nowPos.Set(m_nowPos.x, m_nowPos.y, m_nowPos.z - m_vel * Time.deltaTime);
         this.transform.position = m_nowPos;
