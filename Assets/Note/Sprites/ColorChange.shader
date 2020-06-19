@@ -65,9 +65,9 @@ Shader "Unlit/ColorChange"
             {
                 fixed4 col = tex2D(_MainTex, i.uv);
                 float a = clamp(((i.world.z - _Boundary) / _Gradient), 0, 1);
-                fixed3 albedo = col.rgb * (_Color.rgb * a + _SpecColor.rgb * (1 - a));
+                fixed4 albedo = col * (_Color * a + _SpecColor * (1 - a));
                 UNITY_APPLY_FOG(i.fogCoord, col);
-                return fixed4(albedo, col.a);
+                return fixed4(albedo);
             }
             ENDCG
         }
