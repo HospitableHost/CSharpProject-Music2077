@@ -25,10 +25,10 @@ public class QuadBehave : MonoBehaviour
   
     static public float m_vel = 0.0f;
 
-    static public float GoodLeft { get { return Settings.Settings.SurfacePos - erreurGood; } }
+    static public float GoodLeft { get { return Settings.Settings.SurfacePos - 2 * erreurGood; } }
     static public float GoodRight { get { return Settings.Settings.SurfacePos + erreurGood; } }
-    static public float PerfectLeft { get { return Settings.Settings.SurfacePos - erreurPerfect; } }
-    static public float PerfectRight { get { return Settings.Settings.SurfacePos + erreurPerfect; } }
+    static public float PerfectLeft { get { return Settings.Settings.SurfacePos - 6 * erreurPerfect; } }
+    static public float PerfectRight { get { return Settings.Settings.SurfacePos - erreurPerfect; } }
 
     //use this to init
     virtual public void Initialize(Note.Note note) { }
