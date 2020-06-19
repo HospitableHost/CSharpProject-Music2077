@@ -12,7 +12,7 @@ public class CountDown : MonoBehaviour
     private void Start()
     {
         AS = gameObject.GetComponent<AudioSource>();
-        AS.clip.name = Settings.Settings.ChosenSong;
+        AS.clip = Resources.Load<AudioClip>(Settings.Settings.ChosenSong);
         Debug.Log("having readyToStart");
         GameObject q = Resources.Load<GameObject>("Prefabs/number1Text");
         number1 = MonoBehaviour.Instantiate(q, new Vector3(0, 0, 50.0f), new Quaternion());
@@ -57,6 +57,8 @@ public class CountDown : MonoBehaviour
             start.transform.position -= new Vector3(0, 0, 1f);
             yield return 0;
         }
+        Time.timeScale = 1;
         AS.Play();
+
     }
 }
