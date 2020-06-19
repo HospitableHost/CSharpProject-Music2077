@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using Settings;
+using UnityEditor.UI;
 
 class LongQuadBehave : QuadBehave
 { 
@@ -18,6 +19,30 @@ class LongQuadBehave : QuadBehave
         currentNoteStrip = note;
     }
 
+    private void Start()
+    {
+        m_quad = this.gameObject;
+        Background.Background.SetPositionAtTrack(transform, m_note.trackNum, this.transform.localScale.z / 2);
+        m_nowPos = transform.position;
+        QuadMaterial.OnLeave(this.gameObject);
+    }
+
+    private void FixedUpdate()
+    {
+        m_nowPos.Set(m_nowPos.x, m_nowPos.y, m_nowPos.z - m_vel * Time.deltaTime);
+        this.transform.position = m_nowPos;
+        if (CheckHit())
+        {
+            Debug.Log("真的点中了");
+            QuadMaterial.OnTouch(this.gameObject);
+        }
+        if (CheckOut())
+        {
+            Debug.Log("checkout");
+            QuadPool.Die(this.gameObject);
+        }
+
+    }
     //这个函数根据“玩家触摸的位置”“音符条的位置”“指示音符条是否有效的变量IsValid”来决定返回值
     //这个函数还会根据“玩家触摸的位置”“音符条的位置”维护IsValid变量
     override public bool CheckHit()
@@ -74,6 +99,7 @@ class LongQuadBehave : QuadBehave
                 }
                 else
                 {
+                    QuadMaterial.OnLeave(this.gameObject);
                     IsValid = false;
                     Score.Score.goodNum += 1;
                     return false;
