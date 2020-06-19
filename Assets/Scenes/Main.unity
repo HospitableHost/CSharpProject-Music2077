@@ -196,6 +196,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1393333504861205344, guid: 568cb5cb953b9ab40a33eaebcc6aaf60,
+        type: 3}
+      propertyPath: planesActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1393333504861205346, guid: 568cb5cb953b9ab40a33eaebcc6aaf60,
         type: 3}
       propertyPath: m_Name
