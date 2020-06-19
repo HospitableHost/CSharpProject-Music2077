@@ -11,7 +11,7 @@ public class QuadMaterial
     static GameObject CreateFiller(Transform parent)
     {
         GameObject go;
-        if (pool.Count >= 0)
+        if (pool.Count > 0)
         {
             go = pool.Pop();
             go.transform.SetParent(parent);
@@ -40,7 +40,7 @@ public class QuadMaterial
 
     public static void OnLeave(GameObject quad)
     {
-        if(quad.transform.GetChild(0)) DestroyFiller(quad.transform.GetChild(0));
+        if(quad.transform.childCount > 0) DestroyFiller(quad.transform.GetChild(0));
         quad.GetComponent<MeshRenderer>().sharedMaterial = normalMat;
     }
 }
