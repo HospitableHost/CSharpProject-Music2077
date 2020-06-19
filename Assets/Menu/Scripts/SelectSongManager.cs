@@ -11,6 +11,14 @@ public class SelectSongManager : MonoBehaviour
         //Application.LoadLevel(sceneName);
         SceneManager.LoadScene("sceneName");
     }
+    public void HardButtonOnClick()
+    {
+        Settings.Settings.difficulty = Settings.Difficulty.difficult;
+    }
+    public void EasyButtonOnClick()
+    {
+        Settings.Settings.difficulty = Settings.Difficulty.easy;
+    }
     public void backBtnOnClick()
     {
         Application.LoadLevel("Menu");

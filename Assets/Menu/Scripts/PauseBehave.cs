@@ -8,16 +8,11 @@ public class PauseBehave : MonoBehaviour
     public float displayImageDuration = 1f;
 
 
-
+    static public bool isPause = false;
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
