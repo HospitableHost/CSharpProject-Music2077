@@ -99,7 +99,7 @@ class LongQuadBehave : QuadBehave
                 }
                 else
                 {
-                    QuadMaterial.OnLeave(this.gameObject);
+                    QuadMaterial.OnLeave(gameObject);
                     IsValid = false;
                     Score.Score.goodNum += 1;
                     return false;
