@@ -25,9 +25,11 @@ public class ShortQuadBehave : QuadBehave
         int sForBar= MusicScore.MusicScoreManager.musicScore.scorePerSecOfNoteStrip;
         switch (Screen.width)
         {
-            case 2160: borderLine = 0.1; break;
-            case 1920: borderLine = 0.7; break;
-            default: break;
+            case 2160: borderLine = 1.7; break;
+            case 1920: borderLine = 1.5; break;
+            default:
+                borderLine = 1.5;
+                break;
         }
         //Vector3 CameraPos = new Vector3(0, 0, -5);//摄像机的世界坐标
         //Vector3 TouchPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -37,18 +39,17 @@ public class ShortQuadBehave : QuadBehave
 
         foreach (Ray ray in allTouchRay)
         {
-
+            if (this.IsValid == false) return false;//按键若失效 直接失败
 
             RaycastHit result;
             int layerMask = 1<<8;
             if (Physics.Raycast(ray, out result,100, layerMask))
             {
                 Debug.Log("hitttttttttttttttttttttttttttttttttttttttttttt");
-
+                Debug.Log(GoodRight+":" +GoodLeft+":" + PerfectLeft+":" + PerfectRight);
                 //double distance = this.m_nowPos.z;//获取按键的y坐标
                 double distance = result.point.z;
                 Debug.Log(distance);
-                Debug.Log(this.m_nowPos.z);
                 if (distance > borderLine) return false;//在合法触摸区之外 直接返回
 
                 if (distance < GoodRight && distance > PerfectRight)
