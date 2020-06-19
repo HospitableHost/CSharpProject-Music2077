@@ -13,22 +13,44 @@ public class ShortQuadBehave : QuadBehave
     }
 
 
+    /*
+    override public bool CheckHit()
+    {
+        if (this.IsValid == false) //如果这个音符条失效了，那么玩家就不能再触发音符了，所以就没必要检测是否成功触发音符了，即我就认为没有hit到音符，即返回false       
+            return false;
+        float scoreLevel = 0.0f;
+        float sForBar = MusicScore.MusicScoreManager.musicScore.scorePerSecOfNoteStrip;
+        float nowPosition = this.m_nowPos.z;
+        //Debug.Log(nowPosition);
+        if (nowPosition <= GoodLeft && nowPosition>=GoodRight && haveTouchOfTheTrack(this.m_note.trackNum))
+        {
+            Debug.Log("是否被按下" + haveTouchOfTheTrack(this.m_note.trackNum));
+            Debug.Log("good");
+            scoreLevel = 0.5f;//Good
 
+            Score.Score.totalScore += scoreLevel * sForBar;
+            Score.Score.goodNum += 1;
+            this.IsValid = false;//触摸一次之后按键失效处理
+            return true;
+        }
+        return false;
+    }*/
 
+    // /*
     //todo:检测触摸判断
     override public bool CheckHit()
     {
         if (this.IsValid == false) return false;//按键若失效 直接失败
 
         float borderLine = 0;//合法检测区
-        float scoreLevel = 0; //表示得分的等级 5 - good     10 - perfect      0 - miss
+        float scoreLevel = 0; //表示得分的等级 0.5 - good     1 - perfect      0 - miss
         float sForBar= MusicScore.MusicScoreManager.musicScore.scorePerSecOfNoteStrip;
         switch (Screen.width)
         {
-            case 2160: borderLine = 1.7f; break;
-            case 1920: borderLine = 1.5f; break;
+            case 2160: borderLine = 0.7f; break;
+            case 1920: borderLine = 0.5f; break;
             default:
-                borderLine = 1.5f;
+                borderLine = 1.0f;
                 break;
         }
         //Vector3 CameraPos = new Vector3(0, 0, -5);//摄像机的世界坐标
@@ -45,12 +67,14 @@ public class ShortQuadBehave : QuadBehave
             int layerMask = 1<<8;
             if (Physics.Raycast(ray, out result,100, layerMask))
             {
-                Debug.Log("hitttttttttttttttttttttttttttttttttttttttttttt");
-                Debug.Log(GoodRight+":" +GoodLeft+":" + PerfectLeft+":" + PerfectRight);
+                //Debug.Log("hitttttttttttttttttttttttttttttttttttttttttttt");
+                //Debug.Log(GoodRight+":" +GoodLeft+":" + PerfectLeft+":" + PerfectRight);
+                Debug.Log("现在的位置是"+(this.m_nowPos.z - this.m_quad.transform.localScale.z / 2));
+                float distance = this.m_nowPos.z - this.m_quad.transform.localScale.z / 2;
                 //float distance = this.m_nowPos.z;//获取按键的y坐标
-                float distance = result.point.z;
-                Debug.Log(distance);
-                if (distance > borderLine) return false;//在合法触摸区之外 直接返回
+                //float distance = result.point.z;
+                Debug.Log("触摸点的距离是"+distance);
+                if (distance > 4 * borderLine) return false;//在合法触摸区之外 直接返回
 
                 if (distance < GoodRight && distance > PerfectRight)
                 {
@@ -89,7 +113,7 @@ public class ShortQuadBehave : QuadBehave
         return false;//不应该从这里返回  前面涵盖了所有情况
 
     }
-
+    //*/
 
     //todo:出边界检测
     public override bool CheckOut()
