@@ -10,5 +10,8 @@ public class SelectSongManager : MonoBehaviour
         //Application.LoadLevel(sceneName);
         SceneManager.LoadScene("sceneName");
     }
+    public void HardButtonOnClick()
+    {
 
+    }
 }
