@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 namespace MusicSampler
 {
@@ -97,11 +98,18 @@ namespace MusicSampler
         }
         private void Update()
         {
-            GetSpectrums();
-            GetFrequencyBands();
-            GetNormalizedBands();
-            GetBandBuffers(increasingType, decreasingType);
-            BandNegativeCheck();
+            try
+            {
+                GetSpectrums();
+                GetFrequencyBands();
+                GetNormalizedBands();
+                GetBandBuffers(increasingType, decreasingType);
+                BandNegativeCheck();
+            }
+            catch(Exception e)
+            {
+                Debugger.Log(e.Message);
+            }
         }
         #endregion
 
