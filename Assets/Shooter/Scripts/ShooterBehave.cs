@@ -15,8 +15,12 @@ public class ShooterBehave : MonoBehaviour
     private int i;    //对List列表进行计数
     private bool[] Track;        //存储12条通道是否使用的数组
     private List<Note.Note> Music;   //深复制存储乐谱的链表
+<<<<<<< HEAD
     private AudioSource As;
 
+=======
+    float startTime = 0.0f;
+>>>>>>> bbd6ec8bcb73030dccd7eb5bfa4c5f22f7c2bb75
     private void Shoot()    //根据乐谱链表，发射一个Quad
     {
         switch (Music[i].noteType)  //按类型绑定脚本
@@ -61,13 +65,18 @@ public class ShooterBehave : MonoBehaviour
         }
         i = 0;
         time = 50 / QuadBehave.m_vel;
+        startTime = Time.time;
     }   
     void FixedUpdate()    //根据时间判断发射与否
     {       
         if (i < Music.Count)
         {       
             Note.Note currentNote = Music[i];
+<<<<<<< HEAD
             if (Time.time >= currentNote.arrivalTime - time)
+=======
+            if (Time.time >= currentNote.arrivalTime - time + startTime)
+>>>>>>> bbd6ec8bcb73030dccd7eb5bfa4c5f22f7c2bb75
             {
                 if (i == 0) Background.Background.PlanesActivity = false;
                 Shoot();
