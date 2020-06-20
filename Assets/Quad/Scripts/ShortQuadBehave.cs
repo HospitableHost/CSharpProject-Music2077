@@ -69,16 +69,16 @@ public class ShortQuadBehave : QuadBehave
             {
                 //Debug.Log("hitttttttttttttttttttttttttttttttttttttttttttt");
                 //Debug.Log(GoodRight+":" +GoodLeft+":" + PerfectLeft+":" + PerfectRight);
-                Debug.Log("现在的位置是"+(this.m_nowPos.z - this.m_quad.transform.localScale.z / 2));
+                //Debug.Log("现在的位置是"+(this.m_nowPos.z - this.m_quad.transform.localScale.z / 2));
                 float distance = this.m_nowPos.z - this.m_quad.transform.localScale.z / 2;
                 //float distance = this.m_nowPos.z;//获取按键的y坐标
                 //float distance = result.point.z;
-                Debug.Log("触摸点的距离是"+distance);
+                //Debug.Log("触摸点的距离是"+distance);
                 if (distance > 4 * borderLine) return false;//在合法触摸区之外 直接返回
 
                 if (distance < GoodRight && distance > PerfectRight)
                 {
-                    Debug.Log("good");
+                    //Debug.Log("good");
                     scoreLevel = 0.5f;//Good
                     Score.Score.totalScore += scoreLevel * sForBar;
                     Score.Score.goodNum += 1;
@@ -89,7 +89,7 @@ public class ShortQuadBehave : QuadBehave
                 }
                 else if (distance > PerfectLeft)
                 {
-                    Debug.Log("perfect");
+                    //Debug.Log("perfect");
 
                     scoreLevel = 1f;//perfect 得分
                     Score.Score.totalScore += scoreLevel * sForBar;
@@ -101,7 +101,7 @@ public class ShortQuadBehave : QuadBehave
                 }
                 else if (distance > GoodLeft)
                 {
-                    Debug.Log("good");
+                    //Debug.Log("good");
 
                     scoreLevel = 0.5f;//good得分
                     Score.Score.totalScore += scoreLevel * sForBar;

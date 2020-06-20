@@ -48,12 +48,12 @@ public class QuadBehave : MonoBehaviour
         this.transform.position = m_nowPos;
         if (CheckHit())
         {
-            Debug.Log("真的点中了");
+            //Debug.Log("真的点中了");
             hitQuad();
         }
         if (CheckOut())
         {
-            Debug.Log("checkout");
+            //Debug.Log("checkout");
             QuadPool.Die(this.gameObject);
         }
         
@@ -117,7 +117,7 @@ public class QuadBehave : MonoBehaviour
             if (Physics.Raycast(allRays[i], out raycastHits[i]))
             {
                 touchPositions[i] = raycastHits[i].point;
-                Debug.Log("碰撞点的位置为：("+touchPositions[i].x+","+ touchPositions[i].y+","+ touchPositions[i].z+")");
+                //Debug.Log("碰撞点的位置为：("+touchPositions[i].x+","+ touchPositions[i].y+","+ touchPositions[i].z+")");
             }
             else
                 touchPositions[i] = new Vector3(100, 100, 100);//没什么影响，肯定判断出来是没按下按键

@@ -9,8 +9,10 @@ public class CountDown : MonoBehaviour
     GameObject number3;
     GameObject start;
     AudioSource AS;
+    public static bool flag = false;//表明音乐是否已经开始播放
     private void Start()
     {
+        flag = false;
         AS = gameObject.GetComponent<AudioSource>();
         AS.clip = Resources.Load<AudioClip>(Settings.Settings.ChosenSong);
 
@@ -58,6 +60,7 @@ public class CountDown : MonoBehaviour
         }
         Time.timeScale = 1;
         Background.Background.PlanesActivity = false;
+        flag = true;
         AS.Play();
 
     }

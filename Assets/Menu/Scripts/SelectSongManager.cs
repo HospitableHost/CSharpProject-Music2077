@@ -28,7 +28,6 @@ public class SelectSongManager : MonoBehaviour
     public void imageButton(string songName)
     {
         Settings.Settings.ChosenSong = songName;
-        Debug.Log("歌曲："+ Settings.Settings.ChosenSong);
     }
 
     public void startBtnOnClick()
@@ -37,16 +36,16 @@ public class SelectSongManager : MonoBehaviour
         {
             case 2160: 
                 Settings.Settings.edgePos = -0.66f;
-                Settings.Settings.SurfacePos = 0.5f;
+                Settings.Settings.SurfacePos = 0.8f;
                 break;
             case 1920:
                 Settings.Settings.edgePos = -0.12f;
-                Settings.Settings.SurfacePos = 0.7f;
+                Settings.Settings.SurfacePos = 1.5f;
                 break;
             default: 
                 break;
         }
-
+        Debug.Log("变色面在："+ Settings.Settings.SurfacePos);
         //Application.LoadLevel("Main");
         SceneManager.LoadScene("Main");
 
