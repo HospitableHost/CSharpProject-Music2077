@@ -7,6 +7,6 @@ public class Debugger : MonoBehaviour
 {
     public static void Log(string msg)
     {
-        GameObject.Find("Debugger").GetComponent<Text>().text += "/n" + msg;
+        GameObject.Find("Debugger").GetComponent<Text>().text += "\n" + msg;
     }
 }

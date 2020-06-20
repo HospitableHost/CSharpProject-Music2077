@@ -57,6 +57,7 @@ public class CountDown : MonoBehaviour
             yield return 0;
         }
         Time.timeScale = 1;
+        Background.Background.PlanesActivity = false;
         AS.Play();
 
     }

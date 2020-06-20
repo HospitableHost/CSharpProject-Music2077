@@ -36,10 +36,10 @@ namespace Background
         }
         public static bool PlanesActivity
         {
-            get { return Self.planesActive; }
+            get { return Self.PlanesActive; }
             set
             {
-                Self.planesActive = value;
+                Self.PlanesActive = value;
             }
         }
         float[] ActiveProgress = { 1, 1, 1, 1 };
@@ -155,7 +155,7 @@ namespace Background
                 {
                     if(PlaneActive[i])
                     {
-                        ActiveProgress[i] += Time.deltaTime * 0.5f;
+                        ActiveProgress[i] += 0.02f;
                         if (ActiveProgress[i] > 1) ActiveProgress[i] = 1;
                     }
                     else
@@ -164,7 +164,6 @@ namespace Background
                         if (ActiveProgress[i] < 0) ActiveProgress[i] = 0;
                     }
                     Planes[i].SetFloat("_Metallic", (1 - ActiveProgress[i]) * 0.8f);
-                    //SetSlidesAlpha(i, 1 - ActiveProgress[i]);
                     SetBarrierAlpha(i, 1 - ActiveProgress[i]);
                 }
                 yield return 0;

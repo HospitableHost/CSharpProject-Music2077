@@ -30,6 +30,7 @@ public class MusicTexture : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Score.Score.Reset();
         frames = new SpriteRenderer[count];
         CreateFrames();
     }

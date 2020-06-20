@@ -4,7 +4,18 @@ using UnityEngine;
 
 public class Refresher : MonoBehaviour
 {
-    void Update()
+    [SerializeField]
+    Material[] m;
+
+    private void Start()
+    {
+        foreach(Material mt in m)
+        {
+            mt.SetFloat("_Boundary", Settings.Settings.SurfacePos); 
+        }
+    }
+
+    void LateUpdate()
     {
         QuadBehave.frameChecked = false;
     }

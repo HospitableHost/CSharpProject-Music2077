@@ -13,6 +13,14 @@ namespace Score
         public static int goodNum { get; set; }  //good级命中数
 
         public static int perfectNum { get; set; } //perfect评分方块数
+
+        public static void Reset()
+        {
+            totalScore = 0;
+            missNum = 0;
+            goodNum = 0;
+            perfectNum = 0;
+        }
     }
 
 }

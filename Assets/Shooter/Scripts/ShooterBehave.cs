@@ -7,6 +7,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ShooterBehave : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class ShooterBehave : MonoBehaviour
     private int i;    //对List列表进行计数
     private bool[] Track;        //存储12条通道是否使用的数组
     private List<Note.Note> Music;   //深复制存储乐谱的链表
+    private AudioSource As;
+
     private void Shoot()    //根据乐谱链表，发射一个Quad
     {
         switch (Music[i].noteType)  //按类型绑定脚本
@@ -38,6 +41,7 @@ public class ShooterBehave : MonoBehaviour
            
     void Start()    //初始化游戏的时间和乐谱音符计数
     {
+        As = GameObject.Find("AudioPlayer").GetComponent<AudioSource>();
         MusicScore.MusicScoreManager.ImportFromJSON(Settings.Settings.ChosenSong);
         this.ImportMusic(MusicScore.MusicScoreManager.musicScore.musicScore);
         switch (Settings.Settings.difficulty)
@@ -63,14 +67,24 @@ public class ShooterBehave : MonoBehaviour
         if (i < Music.Count)
         {       
             Note.Note currentNote = Music[i];
-            if (Time.time >= currentNote.arrivalTime-time)
+            if (Time.time >= currentNote.arrivalTime - time)
             {
                 if (i == 0) Background.Background.PlanesActivity = false;
                 Shoot();
                 i++;
             }
+            if(As.isPlaying)
+            {
+                MusicEnd();
+            }
         }
     }
+
+    void MusicEnd()
+    {
+        SceneManager.LoadScene("Clearing");
+    }
+
     private void ImportMusic(List<Note.Note> OriginMusic) 
     {
         using (MemoryStream ms = new MemoryStream())  //使用序列化+反序列化进行深复制

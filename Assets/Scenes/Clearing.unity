@@ -150,6 +150,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27ef40f028cfbbe4d85602c22ef0c387, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  perfect: {fileID: 185928125}
+  good: {fileID: 2096927421}
+  miss: {fileID: 354095766}
+  score: {fileID: 394216286}
 --- !u!4 &78126638
 Transform:
   m_ObjectHideFlags: 0
