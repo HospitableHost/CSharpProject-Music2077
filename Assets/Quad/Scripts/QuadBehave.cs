@@ -49,7 +49,7 @@ public class QuadBehave : MonoBehaviour
         if (CheckHit())
         {
             //Debug.Log("真的点中了");
-            hitQuad();
+            //hitQuad();
         }
         if (CheckOut())
         {
